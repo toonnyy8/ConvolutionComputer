@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="./include.js"></script>
+    <title>CComputer</title>
+    <link href=".\Flat-UI-master\dist\css\vendor\bootstrap\css\bootstrap.min.css" rel="stylesheet">
+    <link href=".\Flat-UI-master\dist\css\flat-ui.min.css" rel="stylesheet">
+</head>
+
+<body style="background-color:#e4e4e4;">
+    <div style="padding:20px;margin-bottom:5px;"></div>
+    <div style="padding:20px;margin-bottom:5px;"></div>
+    <div style="background-color:rgb(e4, e4, e4);padding:10px;margin-bottom:5px;text-align:center;">
+        <h1 style="color:rgb(87, 87, 87);font-family:Microsoft JhengHei;">
+            Convolution computer
+        </h1>
+    </div>
+    <div style="padding:20px;margin-bottom:5px;"></div>
+    <div style="padding:20px;margin-bottom:5px;"></div>
+    <div style="background-color:rgb(e4, e4, e4);padding:10px;margin-bottom:5px;text-align:center;">
+        <h4 style="color:rgb(0, 0, 0);font-family:Microsoft JhengHei;">
+            Enter</br>
+            開始</br>
+            </br>
+            Esc</br>
+            離開
+        </h4>
+    </div>
+    <script>
+        let new_test = [];
+        keyboardJS.bind("n", new_test[0] = function() {
+            keyboardJS.bind("e", new_test[1] = function() {
+                keyboardJS.bind("w", new_test[2] = function() {
+                    keyboardJS.bind("t", new_test[3] = function() {
+                        keyboardJS.bind("e", new_test[4] = function() {
+                            keyboardJS.bind("s", new_test[5] = function() {
+                                keyboardJS.bind("t", new_test[6] = function() {
+                                    window.location.href = "./include/newtest/newtest.html";
+                                    //window.location.href = "./include/newtest/maze/index.html";
+                                });
+                                keyboardJS.unbind("s", new_test[5]);
+                            });
+                            keyboardJS.unbind("e", new_test[4]);
+                        });
+                        keyboardJS.unbind("t", new_test[3]);
+                    });
+                    keyboardJS.unbind("w", new_test[2]);
+                });
+                keyboardJS.unbind("e", new_test[1]);
+            });
+            keyboardJS.unbind("n", new_test[0]);
+        });
+        keyboardJS.bind("enter", function() {
+            window.location.href = "./index.html";
+        });
+        keyboardJS.bind("esc", function() {
+            window.close();
+        });
+    </script>
+</body>
+
+</html>
