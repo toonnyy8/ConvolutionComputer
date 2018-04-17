@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <script src="./include.js"></script>
+    <title>CComputer</title>
+    <!-- Tocas UI：CSS 與元件 -->
+    <link rel="stylesheet" href="./tocasUI/tocas.css">
+    <!-- Tocas JS：模塊與 JavaScript 函式 -->
+    <script src="./tocasUI/tocas.js"></script>
+</head>
+<div id="holder" class="ts basic dashed slate">
+    <span class="header">上傳圖片或影音</span>
+    <span class="description">將圖片拖拉至此處進行上傳。</span>
+</div>
+<script>
+    var holder = document.getElementById('holder');
+    holder.ondragover = function() {
+        return false;
+    };
+    holder.ondragleave = holder.ondragend = function() {
+        return false;
+    };
+    holder.ondrop = function(e) {
+        e.preventDefault();
+        var file = e.dataTransfer.files[0];
+        console.log('File you dragged here is', file.path);
+        return false;
+    };
+</script>
+<script>
+    keyboardJS.bind("esc", function() {
+        window.location.href = "./start.html";
+    });
+</script>
+
+</html>

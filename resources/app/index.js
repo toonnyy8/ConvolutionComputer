@@ -7,7 +7,7 @@ const ipcMain = require('electron').ipcMain;
 function createWindow() {
     mainWindow = new BrowserWindow({
         width: 1300,
-        height: 880,
+        height: 950,
         webPreferences: {
             nodeIntegrationInWorker: true
         }

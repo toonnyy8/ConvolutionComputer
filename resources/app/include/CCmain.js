@@ -71,6 +71,12 @@ exports: {
         let data_root;
         let renderer = new PIXI.Application(width, height, { backgroundColor: colorset.background } /*, { transparent: true }*/ ); //設置渲染器
         let stage = new PIXI.Container(); //設置容器
+        let style = new PIXI.TextStyle({
+            fontFamily: 'Source code pro',
+            fontSize: 20,
+            fill: [0xffffff]
+        });
+        let N_Value = new PIXI.Text("", style);
 
         this.readData = function() {
             return data;
@@ -133,6 +139,8 @@ exports: {
 
             renderer.stage.addChild(stage);
 
+            style.fill = 0xffffff - colorset.background;
+
             let X_axis = new PIXI.Graphics();
             renderer.stage.addChild(X_axis); // 要將 Graphics 物件加到 Stage 中
             X_axis.beginFill(colorset.X_axis); // 設定我們要畫的顏色
@@ -143,16 +151,46 @@ exports: {
             Y_axis.beginFill(colorset.Y_axis); // 設定我們要畫的顏色
             Y_axis.drawRect((width / 200) * width_rate - 1, height, 2, -1 * height);
 
+            let dataBar = [];
             for (let i = 0; i < data.length; i++) {
-                let dataBar = new PIXI.Graphics();
-                stage.addChild(dataBar); // 要將 Graphics 物件加到 Stage 中
-                dataBar.beginFill(colorset.dataBar); // 設定我們要畫的顏色
-                dataBar.drawRect((width / 100) * i * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[i] / height_rate);
+                dataBar[i] = new PIXI.Graphics();
+                stage.addChild(dataBar[i]); // 要將 Graphics 物件加到 Stage 中
+                dataBar[i].beginFill(colorset.dataBar); // 設定我們要畫的顏色
+                if (data[i] > 0) {
+                    dataBar[i].drawRect((width / 100) * i * width_rate * 5, data_root - (height * data[i] / height_rate), (width / 100) * width_rate, height * data[i] / height_rate);
+                } else {
+                    dataBar[i].drawRect((width / 100) * i * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[i] / height_rate);
+                }
+                dataBar[i].interactive = true;
+                dataBar[i].buttonMode = true;
+                dataBar[i].on("pointerover", function() {
+                    dataBar[i].alpha = 0.4;
+                    dataBar[i].on("pointermove", function() {
+                        N_Value.text = `[${i}]=${data[i]}`;
+                        if (width - event.offsetX > 80) {
+                            N_Value.x = event.offsetX + 10;
+                        } else {
+                            N_Value.x = event.offsetX - 80;
+                        }
+                        if (height - event.offsetY > 40) {
+                            N_Value.y = event.offsetY + 20;
+                        } else {
+                            N_Value.y = event.offsetY - 20;
+                        }
+                        renderer.stage.addChild(N_Value);
+                    })
+                })
+                dataBar[i].on("pointerout", function() {
+                    dataBar[i].alpha = 1;
+                    dataBar[i].off("pointermove");
+                    renderer.stage.removeChild(N_Value);
+                })
             };
         };
 
         this.setView(data, width, height, width_rate, id, colorset);
 
+        let mark_data = [];
         let mark = new PIXI.Graphics();
         stage.addChild(mark); // 要將 Graphics 物件加到 Stage 中
         this.markSelect = function(n) {
@@ -164,11 +202,13 @@ exports: {
                 stage.addChild(mark);
                 return n;
             } else {
+                for (let i = data.length; i <= n; i++) {
+                    data[i] = 0;
+                };
                 stage.removeChild(mark);
                 mark = new PIXI.Graphics();
                 stage.addChild(mark);
-                alert(`N=${n} is undefined`);
-                return undefined;
+                return 0;
             };
         };
 

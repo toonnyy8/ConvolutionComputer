@@ -22,10 +22,9 @@
 
     <div id="data" class="ts grid">
         <div class="sixteen wide column"></div>
-        <div class="nine wide column">
-            <div id="X" class="ts very narrow container"></div>
+        <div class="eleven wide column">
+            <div id="X" class="ts narrow container"></div>
         </div>
-        <div class="two wide column"></div>
         <div class="five wide column">
             <h1 v-on:click="X_tool=(X_tool==false)">
                 X
@@ -48,20 +47,28 @@
                     <div v-if="X_input==true">
                         <p>
                             <div class="ts buttons">
-                                <button v-on:click="X_input_select=0" class="ts button" v-bind:class="{active:X_input_select==0}">檔案路徑</button>
+                                <button v-on:click="X_input_select=0" class="ts button" v-bind:class="{active:X_input_select==0}">上傳檔案</button>
                                 <div class="or" data-text="or"></div>
-                                <button v-on:click="X_input_select=1" class="ts button" v-bind:class="{active:X_input_select==1}">數列</button>
+                                <button v-on:click="X_input_select=1" class="ts button" v-bind:class="{active:X_input_select==1}">輸入檔案路徑</button>
+                                <div class="or" data-text="or"></div>
+                                <button v-on:click="X_input_select=2" class="ts button" v-bind:class="{active:X_input_select==2}">數列</button>
                             </div>
                         </p>
                         <p>
                             <div v-if="X_input_select==0">
+                                <div id="X_loader" class="ts basic dashed slate" @click="X_loader__()">
+                                    <span class="header">上傳json檔</span>
+                                    <span class="description">點擊此處後，將json檔拖拉至此進行上傳。</span>
+                                </div>
+                            </div>
+                            <div v-if="X_input_select==1">
                                 <div class="ts action input">
                                     <input type="text" v-model="X_path" placeholder="檔案路徑(json檔)">
                                     <button onclick="data_view.X_data=CCmain.readFile(data_view.X_path);X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset)); "
                                         class="ts button">讀取</button>
                                 </div>
                             </div>
-                            <div v-else-if="X_input_select==1">
+                            <div v-else-if="X_input_select==2">
                                 <div class="ts action input">
                                     <input type="text" v-model="X_data" placeholder="輸入數列(ex:[1,30,5])">
                                     <button onclick="data_view.X_data=JSON.parse(data_view.X_data);X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
@@ -199,10 +206,10 @@
             </div>
         </div>
         <div class="sixteen wide column"></div>
-        <div class="nine wide column">
-            <div id="H" class="ts very narrow container"></div>
+        <div class="eleven wide column">
+            <div id="H" class="ts narrow container"></div>
         </div>
-        <div class="two wide column"></div>
+        <!--<div class="two wide column"></div>-->
         <div class="five wide column">
             <h1 v-on:click="H_tool=(H_tool==false)">
                 H
@@ -225,20 +232,28 @@
                     <div v-if="H_input==true">
                         <p>
                             <div class="ts buttons">
-                                <button v-on:click="H_input_select=0" class="ts button" v-bind:class="{active:H_input_select==0}">檔案路徑</button>
+                                <button v-on:click="H_input_select=0" class="ts button" v-bind:class="{active:H_input_select==0}">上傳檔案</button>
                                 <div class="or" data-text="or"></div>
-                                <button v-on:click="H_input_select=1" class="ts button" v-bind:class="{active:H_input_select==1}">數列</button>
+                                <button v-on:click="H_input_select=1" class="ts button" v-bind:class="{active:H_input_select==1}">輸入檔案路徑</button>
+                                <div class="or" data-text="or"></div>
+                                <button v-on:click="H_input_select=2" class="ts button" v-bind:class="{active:H_input_select==2}">數列</button>
                             </div>
                         </p>
                         <p>
                             <div v-if="H_input_select==0">
+                                <div id="H_loader" class="ts basic dashed slate" @click="H_loader__()">
+                                    <span class="header">上傳json檔</span>
+                                    <span class="description">點擊此處後，將json檔拖拉至此進行上傳。</span>
+                                </div>
+                            </div>
+                            <div v-if="H_input_select==1">
                                 <div class="ts action input">
                                     <input type="text" v-model="H_path" placeholder="檔案路徑(json檔)">
                                     <button onclick="data_view.H_data=CCmain.readFile(data_view.H_path);H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">讀取</button>
                                 </div>
                             </div>
-                            <div v-else-if="H_input_select==1">
+                            <div v-else-if="H_input_select==2">
                                 <div class="ts action input">
                                     <input type="text" v-model="H_data" placeholder="輸入數列(ex:[1,30,5])">
                                     <button onclick="data_view.H_data=JSON.parse(data_view.H_data);H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
@@ -611,6 +626,54 @@
                         alert('It\'s saved!');
                     });
                 }
+            },
+            methods: {
+                X_loader__: function() {
+                    let X_loader = document.getElementById('X_loader');
+                    X_loader.ondragover = function() {
+                        return false;
+                    };
+                    X_loader.ondragleave = X_loader.ondragend = function() {
+                        return false;
+                    };
+                    X_loader.ondrop = function(e) {
+                        e.preventDefault();
+                        let file = e.dataTransfer.files[0];
+                        console.log(file.path);
+                        if (file.path.split(".").pop() != "json") {
+                            alert("檔案類型錯誤");
+                        } else {
+                            data_view.X_data = CCmain.readFile(file.path);
+                            X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));
+                            data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);
+                            AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));
+                        }
+                        return false;
+                    };
+                },
+                H_loader__: function() {
+                    let H_loader = document.getElementById('H_loader');
+                    H_loader.ondragover = function() {
+                        return false;
+                    };
+                    H_loader.ondragleave = H_loader.ondragend = function() {
+                        return false;
+                    };
+                    H_loader.ondrop = function(e) {
+                        e.preventDefault();
+                        let file = e.dataTransfer.files[0];
+                        console.log(file.path);
+                        if (file.path.split(".").pop() != "json") {
+                            alert("檔案類型錯誤");
+                        } else {
+                            data_view.H_data = CCmain.readFile(file.path);
+                            H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));
+                            data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);
+                            AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));
+                        }
+                        return false;
+                    };
+                }
             }
         });
         if (!fs.existsSync("./resources/app/set.json")) {
@@ -661,6 +724,8 @@
         data_view.H_set_select_color = data_view.H_set_data.colorset.background;
         data_view.Answer_set_data = CCmain.readFile("./resources/app/set.json")["Answer"] || {};
         data_view.Answer_set_select_color = data_view.Answer_set_data.colorset.background;
+        data_view.X_loader__();
+        data_view.H_loader__();
     </script>
     <script>
         let colortrf = function(color_obj) {
