@@ -80,26 +80,38 @@
                     <div v-else-if="X_select==true">
                         <p>
                             <div class="ts buttons">
-                                <button v-on:click="X_select_select=0" class="ts button" v-bind:class="{active:X_select_select==0}">大小</button>
+                                <button v-on:click="X_select_select=0" class="ts button" v-bind:class="{active:X_select_select==0}">數值標記</button>
                                 <div class="or" data-text="or"></div>
-                                <button v-on:click="X_select_select=1" class="ts button" v-bind:class="{active:X_select_select==1}">位置</button>
+                                <button v-on:click="X_select_select=1" class="ts button" v-bind:class="{active:X_select_select==1}">位置標記</button>
+                                <div class="or" data-text="or"></div>
+                                <button class="ts button" onclick="X_data.reset_Mark();">清除標記</button>
                             </div>
                         </p>
                         <p>
                             <div v-if="X_select_select==0">
                                 <div class="ts action input">
-                                    <input type="number" v-model="X_mark" placeholder="標記特定值">
+                                    <input type="number" v-model="X_mark" placeholder="標記特定數值">
                                     <button onclick="X_data.searchValue(data_view.X_mark);" class="ts button">標記</button>
                                 </div>
                             </div>
                             <div v-else-if="X_select_select==1">
-                                <div class="ts action input">
+                                <div class="ts vertical inputs">
+                                    <div class="ts input">
+                                        <input type="number" v-model="X_mark_x1" min='0' placeholder="從x1">
+                                    </div>
+                                    <div class="ts input">
+                                        <input type="number" v-model="X_mark_x2" min='0' placeholder="到x2">
+                                        <button onclick="X_data.markSelect(data_view.X_mark_x1,data_view.X_mark_x2);" class="ts button">標記</button>
+                                    </div>
+
+                                </div>
+                                <!--<div class="ts action input">
                                     <input type="number" min='0' v-model="X_mark" placeholder="標記特定位置">
                                     <button onclick="X_data.markSelect(data_view.X_mark);" class="ts button">標記</button>
                                 </div>
                                 <p>
                                     在{{X_mark}}的值為{{X_data[X_mark]}}
-                                </p>
+                                </p>-->
                             </div>
                         </p>
                     </div>
@@ -107,14 +119,8 @@
                         <p>
                             <div class="ts vertical inputs">
                                 <div class="ts input">
-                                    <input type="number" v-model="X_change_x1" min='0' placeholder="從x1">
-                                </div>
-                                <div class="ts input">
-                                    <input type="number" v-model="X_change_x2" min='0' placeholder="到x2">
-                                </div>
-                                <div class="ts input">
-                                    <input type="number" v-model="X_change_value" placeholder="增加或減少的值">
-                                    <button onclick="X_data.changeValue(data_view.X_change_x1,data_view.X_change_x2,data_view.X_change_value);data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
+                                    <input type="number" v-model="X_change_value" placeholder="增加或減少標記值">
+                                    <button onclick="X_data.changeValue(data_view.X_change_value);data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">確定</button>
                                 </div>
                             </div>
@@ -265,26 +271,37 @@
                     <div v-else-if="H_select==true">
                         <p>
                             <div class="ts buttons">
-                                <button v-on:click="H_select_select=0" class="ts button" v-bind:class="{active:H_select_select==0}">大小</button>
+                                <button v-on:click="H_select_select=0" class="ts button" v-bind:class="{active:H_select_select==0}">數值標記</button>
                                 <div class="or" data-text="or"></div>
-                                <button v-on:click="H_select_select=1" class="ts button" v-bind:class="{active:H_select_select==1}">位置</button>
+                                <button v-on:click="H_select_select=1" class="ts button" v-bind:class="{active:H_select_select==1}">位置標記</button>
+                                <div class="or" data-text="or"></div>
+                                <button class="ts button" onclick="H_data.reset_Mark();">清除標記</button>
                             </div>
                         </p>
                         <p>
                             <div v-if="H_select_select==0">
                                 <div class="ts action input">
-                                    <input type="number" v-model="H_mark" placeholder="標記特定值">
+                                    <input type="number" v-model="H_mark" placeholder="標記特定數值">
                                     <button onclick="H_data.searchValue(data_view.H_mark);" class="ts button">標記</button>
                                 </div>
                             </div>
                             <div v-else-if="H_select_select==1">
-                                <div class="ts action input">
+                                <div class="ts vertical inputs">
+                                    <div class="ts input">
+                                        <input type="number" v-model="H_mark_x1" min='0' placeholder="從x1">
+                                    </div>
+                                    <div class="ts input">
+                                        <input type="number" v-model="H_mark_x2" min='0' placeholder="到x2">
+                                        <button onclick="H_data.markSelect(data_view.H_mark_x1,data_view.H_mark_x2);" class="ts button">標記</button>
+                                    </div>
+                                </div>
+                                <!--<div class="ts action input">
                                     <input type="number" min="0" v-model="H_mark" placeholder="標記特定位置">
                                     <button onclick="H_data.markSelect(data_view.H_mark);" class="ts button">標記</button>
                                 </div>
                                 <p>
                                     在{{H_mark}}的值為{{H_data[H_mark]}}
-                                </p>
+                                </p>-->
                             </div>
                         </p>
                     </div>
@@ -292,14 +309,8 @@
                         <p>
                             <div class="ts vertical inputs">
                                 <div class="ts input">
-                                    <input type="number" v-model="H_change_x1" min='0' placeholder="從x1">
-                                </div>
-                                <div class="ts input">
-                                    <input type="number" v-model="H_change_x2" min='0' placeholder="到x2">
-                                </div>
-                                <div class="ts input">
-                                    <input type="number" v-model="H_change_value" placeholder="增加或減少的值">
-                                    <button onclick="H_data.changeValue(data_view.H_change_x1,data_view.H_change_x2,data_view.H_change_value);data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
+                                    <input type="number" v-model="H_change_value" placeholder="增加或減少標記值">
+                                    <button onclick="H_data.changeValue(data_view.H_change_value);data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">確定</button>
                                 </div>
                             </div>
@@ -411,26 +422,37 @@
                     <div v-if="Answer_select==true">
                         <p>
                             <div class="ts buttons">
-                                <button v-on:click="Answer_select_select=0" class="ts button" v-bind:class="{active:Answer_select_select==0}">大小</button>
+                                <button v-on:click="Answer_select_select=0" class="ts button" v-bind:class="{active:Answer_select_select==0}">數值標記</button>
                                 <div class="or" data-text="or"></div>
-                                <button v-on:click="Answer_select_select=1" class="ts button" v-bind:class="{active:Answer_select_select==1}">位置</button>
+                                <button v-on:click="Answer_select_select=1" class="ts button" v-bind:class="{active:Answer_select_select==1}">位置標記</button>
+                                <div class="or" data-text="or"></div>
+                                <button class="ts button" onclick="AnswerData.reset_Mark();">清除標記</button>
                             </div>
                         </p>
                         <p>
                             <div v-if="Answer_select_select==0">
                                 <div class="ts action input">
-                                    <input type="number" v-model="Answer_mark" placeholder="標記特定值">
+                                    <input type="number" v-model="Answer_mark" placeholder="標記特定數值">
                                     <button onclick="AnswerData.searchValue(data_view.Answer_mark);" class="ts button">標記</button>
                                 </div>
                             </div>
                             <div v-else-if="Answer_select_select==1">
-                                <div class="ts action input">
+                                <div class="ts vertical inputs">
+                                    <div class="ts input">
+                                        <input type="number" v-model="Answer_mark_x1" min='0' placeholder="從x1">
+                                    </div>
+                                    <div class="ts input">
+                                        <input type="number" v-model="Answer_mark_x2" min='0' placeholder="到x2">
+                                        <button onclick="AnswerData.markSelect(data_view.Answer_mark_x1,data_view.Answer_mark_x2);" class="ts button">標記</button>
+                                    </div>
+                                </div>
+                                <!--<div class="ts action input">
                                     <input type="number" min="0" v-model="Answer_mark" placeholder="標記特定位置">
                                     <button onclick="AnswerData.markSelect(data_view.Answer_mark);" class="ts button">標記</button>
                                 </div>
                                 <p>
                                     在{{Answer_mark}}的值為{{AnswerData[Answer_mark]}}
-                                </p>
+                                </p>-->
                             </div>
                         </p>
                     </div>
@@ -539,10 +561,10 @@
                 X_select_select: 0,
                 X_mark: null,
                 X_mark_value: null,
+                X_mark_x1: null,
+                X_mark_x2: null,
                 /***/
                 X_change: false,
-                X_change_x1: null,
-                X_change_x2: null,
                 X_change_value: null,
                 /***/
                 X_save: false,
@@ -575,10 +597,10 @@
                 H_select_select: 0,
                 H_mark: null,
                 H_mark_value: null,
+                H_mark_x1: null,
+                H_mark_x2: null,
                 /***/
                 H_change: false,
-                H_change_x1: null,
-                H_change_x2: null,
                 H_change_value: null,
                 /***/
                 H_save: false,
@@ -607,6 +629,8 @@
                 Answer_select_select: 0,
                 Answer_mark: null,
                 Answer_mark_value: null,
+                Answer_mark_x1: null,
+                Answer_mark_x2: null,
                 /***/
                 Answer_save: false,
                 Answer_save_select: 0,

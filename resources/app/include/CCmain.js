@@ -190,11 +190,61 @@ exports: {
 
         this.setView(data, width, height, width_rate, id, colorset);
 
-        let mark_data = [];
         let mark = new PIXI.Graphics();
         stage.addChild(mark); // 要將 Graphics 物件加到 Stage 中
-        this.markSelect = function(n) {
-            if (n < data.length) {
+        let mark_data = [];
+        let add_Markdata = function(n) {
+            for (let i = 0; i < mark_data.length; i++) {
+                if (mark_data[i] == n) {
+                    return;
+                };
+            };
+            mark_data[mark_data.length] = n;
+        };
+        let set_Mark = function() {
+            stage.removeChild(mark);
+            mark = new PIXI.Graphics();
+            for (let i = 0; i < mark_data.length; i++) {
+                if (data.length <= mark_data[i]) {
+                    for (let j = data.length; j <= mark_data[i]; j++) {
+                        data[j] = 0;
+                    };
+                };
+                mark.beginFill(colorset.mark); // 設定我們要畫的顏色
+                mark.drawRect((width / 100) * mark_data[i] * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[mark_data[i]] / height_rate);
+            };
+            stage.addChild(mark);
+        };
+        let reset_Mark = this.reset_Mark = function() {
+            mark_data = null;
+            mark_data = [];
+            stage.removeChild(mark);
+            mark = new PIXI.Graphics();
+            stage.addChild(mark);
+        };
+        this.markSelect = function(x1, x2) {
+            x1 = Number(x1) || 0;
+            x2 = Number(x2) || 0;
+            if (x1 == null) {
+                x1 = 0;
+            };
+            if (x2 == null) {
+                x2 = x1;
+            };
+            if (x1 > x2) {
+                let temp = x1;
+                x1 = x2;
+                x2 = temp;
+            };
+            console.log(x1);
+            console.log(x2);
+            for (let i = x1; i <= x2; i++) {
+                add_Markdata(i);
+                console.log(i);
+            };
+            set_Mark();
+
+            /*if (n < data.length) {
                 stage.removeChild(mark);
                 mark = new PIXI.Graphics();
                 mark.beginFill(colorset.mark); // 設定我們要畫的顏色
@@ -209,11 +259,21 @@ exports: {
                 mark = new PIXI.Graphics();
                 stage.addChild(mark);
                 return 0;
-            };
+            };*/
         };
 
         this.searchValue = function(value) {
-            stage.removeChild(mark);
+            if (value == null) {
+                value = 0;
+            };
+            for (let i = 0; i < data.length; i++) {
+                if (value == data[i]) {
+                    add_Markdata(i);
+                };
+            };
+            set_Mark();
+
+            /*stage.removeChild(mark);
             mark = new PIXI.Graphics();
             for (let i = 0; i < data.length; i++) {
                 if (value == data[i]) {
@@ -221,11 +281,17 @@ exports: {
                     mark.drawRect((width / 100) * i * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[i] / height_rate);
                 };
             };
-            stage.addChild(mark);
+            stage.addChild(mark);*/
         };
 
-        this.changeValue = function(x1 = 0, x2 = 0, value = 0) {
-            x1 = Number(x1) || 0;
+        this.changeValue = function(value = 0) {
+            value = Number(value) || 0;
+            for (let i = 0; i < mark_data.length; i++) {
+                data[mark_data[i]] += value;
+            };
+            this.setView(data, width, height, width_rate, id, colorset);
+            set_Mark();
+            /*x1 = Number(x1) || 0;
             x2 = Number(x2) || 0;
             value = Number(value) || 0;
             if (x1 > x2) {
@@ -247,7 +313,7 @@ exports: {
                     mark.drawRect((width / 100) * i * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[i] / height_rate);
                 };
             };
-            stage.addChild(mark);
+            stage.addChild(mark);*/
         };
 
         this.viewShift = function(x) {
