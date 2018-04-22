@@ -243,23 +243,6 @@ exports: {
                 console.log(i);
             };
             set_Mark();
-
-            /*if (n < data.length) {
-                stage.removeChild(mark);
-                mark = new PIXI.Graphics();
-                mark.beginFill(colorset.mark); // 設定我們要畫的顏色
-                mark.drawRect((width / 100) * n * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[n] / height_rate);
-                stage.addChild(mark);
-                return n;
-            } else {
-                for (let i = data.length; i <= n; i++) {
-                    data[i] = 0;
-                };
-                stage.removeChild(mark);
-                mark = new PIXI.Graphics();
-                stage.addChild(mark);
-                return 0;
-            };*/
         };
 
         this.searchValue = function(value) {
@@ -272,16 +255,6 @@ exports: {
                 };
             };
             set_Mark();
-
-            /*stage.removeChild(mark);
-            mark = new PIXI.Graphics();
-            for (let i = 0; i < data.length; i++) {
-                if (value == data[i]) {
-                    mark.beginFill(colorset.mark); // 設定我們要畫的顏色
-                    mark.drawRect((width / 100) * i * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[i] / height_rate);
-                };
-            };
-            stage.addChild(mark);*/
         };
 
         this.changeValue = function(value = 0) {
@@ -291,29 +264,6 @@ exports: {
             };
             this.setView(data, width, height, width_rate, id, colorset);
             set_Mark();
-            /*x1 = Number(x1) || 0;
-            x2 = Number(x2) || 0;
-            value = Number(value) || 0;
-            if (x1 > x2) {
-                let x3 = x2;
-                x2 = x1;
-                x1 = x3;
-            };
-            for (let i = 0; i < data.length; i++) {
-                if (i >= x1 && i <= x2) {
-                    data[i] += value;
-                };
-            };
-            this.setView(data, width, height, width_rate, id, colorset);
-            stage.removeChild(mark);
-            mark = new PIXI.Graphics();
-            for (let i = 0; i < data.length; i++) {
-                if (i >= x1 && i <= x2) {
-                    mark.beginFill(colorset.mark); // 設定我們要畫的顏色
-                    mark.drawRect((width / 100) * i * width_rate * 5, data_root, (width / 100) * width_rate, -1 * height * data[i] / height_rate);
-                };
-            };
-            stage.addChild(mark);*/
         };
 
         this.viewShift = function(x) {
