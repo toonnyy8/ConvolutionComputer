@@ -70,8 +70,8 @@
                             </div>
                             <div v-else-if="X_input_select==2">
                                 <div class="ts action input">
-                                    <input type="text" v-model="X_data" placeholder="輸入數列(ex:[1,30,5])">
-                                    <button onclick="data_view.X_data=JSON.parse(data_view.X_data);X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
+                                    <input type="text" v-model="X_data" placeholder="輸入數列(ex:1,30,5)">
+                                    <button onclick="data_view.X_data=CCmain.tranData(data_view.X_data);X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">輸入</button>
                                 </div>
                             </div>
@@ -253,8 +253,8 @@
                             </div>
                             <div v-else-if="H_input_select==2">
                                 <div class="ts action input">
-                                    <input type="text" v-model="H_data" placeholder="輸入數列(ex:[1,30,5])">
-                                    <button onclick="data_view.H_data=JSON.parse(data_view.H_data);H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
+                                    <input type="text" v-model="H_data" placeholder="輸入數列(ex:1,30,5)">
+                                    <button onclick="data_view.H_data=CCmain.tranData(data_view.H_data);H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">輸入</button>
                                 </div>
                             </div>

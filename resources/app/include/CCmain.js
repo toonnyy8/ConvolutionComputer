@@ -7,9 +7,34 @@ exports: {
         data = JSON.parse(data);
         return data;
     };
+
+    this.tranData = function(data) {
+        data = data.split(",");
+
+        for (let i = 0; i < data.length; i++) {
+            data[i] = Number(data[i]);
+            if (isNaN(data[i])) {
+                data[i] = 0;
+            };
+        };
+        return data;
+    };
+
     this.Convolution = function(input_X = [0], input_H = [0]) {
         input_X = input_X || [0];
+        for (let i = 0; i < input_X.length; i++) {
+            if (isNaN(input_X[i])) {
+                input_X[i] = 0;
+            };
+        };
+
         input_H = input_H || [0];
+        for (let i = 0; i < input_H.length; i++) {
+            if (isNaN(input_H[i])) {
+                input_H[i] = 0;
+            };
+        };
+
         let output_Y = [];
         for (let n = 0; n < (input_X.length + input_H.length - 1); n++) {
             output_Y[n] = 0;
@@ -50,6 +75,7 @@ exports: {
      */
     this.viewData = function(data = [0], width = 800, height = 600, width_rate = 1, id = null, colorset = { background: 0x000000, X_axis: 0xff0040, Y_axis: 0xff0040, dataBar: 0x00fff2, mark: 0xff4444 }) {
         data = data || [0];
+
         if (colorset.background === undefined) {
             colorset.background = 0x000000;
         };
@@ -86,6 +112,11 @@ exports: {
             stage.removeChildren();
             renderer.stage.removeChildren();
             data = __data || [0];
+            for (let i = 0; i < data.length; i++) {
+                if (isNaN(data[i])) {
+                    data[i] = 0;
+                };
+            };
             width = __width;
             height = __height;
             width_rate = __width_rate;
