@@ -2,24 +2,17 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <script src="./include.js"></script>
     <title>CComputer</title>
     <!-- Tocas UI：CSS 與元件 -->
-    <link rel="stylesheet" href="./tocasUI/tocas.css">
+    <link rel="stylesheet" href="./tocasUI/tocas.css" />
     <!-- Tocas JS：模塊與 JavaScript 函式 -->
     <script src="./tocasUI/tocas.js"></script>
 </head>
 
 <body style="background-color:#e4e4e4;">
     <font style="color:#cacaca;"></font>
-    <script>
-        keyboardJS.bind("esc", function() {
-            window.location.href = "./start.html";
-        });
-    </script>
-
-
     <div id="data" class="ts grid">
         <div class="sixteen wide column"></div>
         <div class="eleven wide column">
@@ -63,14 +56,14 @@
                             </div>
                             <div v-if="X_input_select==1">
                                 <div class="ts action input">
-                                    <input type="text" v-model="X_path" placeholder="檔案路徑(json檔)">
+                                    <input type="text" v-model="X_path" placeholder="檔案路徑(json檔)" />
                                     <button onclick="data_view.X_data=CCmain.readFile(data_view.X_path);X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset)); "
                                         class="ts button">讀取</button>
                                 </div>
                             </div>
                             <div v-else-if="X_input_select==2">
                                 <div class="ts action input">
-                                    <input type="text" v-model="X_data" placeholder="輸入數列(ex:1,30,5)">
+                                    <input type="text" v-model="X_data" placeholder="輸入數列(ex:1,30,5)" />
                                     <button onclick="data_view.X_data=CCmain.tranData(data_view.X_data);X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">輸入</button>
                                 </div>
@@ -90,17 +83,17 @@
                         <p>
                             <div v-if="X_select_select==0">
                                 <div class="ts action input">
-                                    <input type="number" v-model="X_mark" placeholder="標記特定數值">
+                                    <input type="number" v-model="X_mark" placeholder="標記特定數值" />
                                     <button onclick="X_data.searchValue(data_view.X_mark);" class="ts button">標記</button>
                                 </div>
                             </div>
                             <div v-else-if="X_select_select==1">
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
-                                        <input type="number" v-model="X_mark_x1" min='0' placeholder="從x1">
+                                        <input type="number" v-model="X_mark_x1" min='0' placeholder="從x1" />
                                     </div>
                                     <div class="ts input">
-                                        <input type="number" v-model="X_mark_x2" min='0' placeholder="到x2">
+                                        <input type="number" v-model="X_mark_x2" min='0' placeholder="到x2" />
                                         <button onclick="X_data.markSelect(data_view.X_mark_x1,data_view.X_mark_x2);" class="ts button">標記</button>
                                     </div>
                                 </div>
@@ -111,7 +104,7 @@
                         <p>
                             <div class="ts vertical inputs">
                                 <div class="ts input">
-                                    <input type="number" v-model="X_change_value" placeholder="增加或減少標記值">
+                                    <input type="number" v-model="X_change_value" placeholder="增加或減少標記值" />
                                     <button onclick="X_data.changeValue(data_view.X_change_value);data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">確定</button>
                                 </div>
@@ -156,20 +149,20 @@
                                 <div class="ts action input">
                                     <div class="ts grid">
                                         <div class="five wide column">
-                                            背景:<input type="color" v-model="X_set_data.colorset.background">
+                                            背景:<input type="color" v-model="X_set_data.colorset.background" />
                                         </div>
                                         <div class="five wide column">
-                                            &nbsp;X軸:<input type="color" v-model="X_set_data.colorset.X_axis">
+                                            &nbsp;X軸:<input type="color" v-model="X_set_data.colorset.X_axis" />
                                         </div>
                                         <div class="five wide column">
-                                            &nbsp;Y軸:<input type="color" v-model="X_set_data.colorset.Y_axis">
+                                            &nbsp;Y軸:<input type="color" v-model="X_set_data.colorset.Y_axis" />
                                         </div>
                                         <div class="one wide column"></div>
                                         <div class="five wide column">
-                                            資料:<input type="color" v-model="X_set_data.colorset.dataBar">
+                                            資料:<input type="color" v-model="X_set_data.colorset.dataBar" />
                                         </div>
                                         <div class="five wide column">
-                                            標記:<input type="color" v-model="X_set_data.colorset.mark">
+                                            標記:<input type="color" v-model="X_set_data.colorset.mark" />
                                         </div>
                                         <div class="six wide column">
                                             <button onclick='X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, "X", colortrf(data_view.X_set_data.colorset));' class="ts primary tiny button">應用</button>
@@ -180,10 +173,10 @@
                             <div v-else-if="X_set_select==1">
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
-                                        寬度:<input type="number" v-model="X_set_data.width" min='0' placeholder="顯示寬度">
+                                        寬度:<input type="number" v-model="X_set_data.width" min='0' placeholder="顯示寬度" />
                                     </div>
                                     <div class="ts input">
-                                        高度:<input type="number" v-model="X_set_data.height" min='0' placeholder="顯示高度">
+                                        高度:<input type="number" v-model="X_set_data.height" min='0' placeholder="顯示高度" />
                                         <button onclick='X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, "X", colortrf(data_view.X_set_data.colorset));' class="ts primary tiny button">應用</button>
                                     </div>
                                 </div>
@@ -191,10 +184,10 @@
                             <div v-else-if="X_set_select==2">
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
-                                        移動:<input type="number" v-model="X_set_shiftSpeed" min='0' placeholder="移動速度">
+                                        移動:<input type="number" v-model="X_set_shiftSpeed" min='0' placeholder="移動速度" />
                                     </div>
                                     <div class="ts input">
-                                        縮放:<input type="number" v-model="X_set_enlargeRate" min='0' placeholder="縮放倍率">
+                                        縮放:<input type="number" v-model="X_set_enlargeRate" min='0' placeholder="縮放倍率" />
                                     </div>
                                 </div>
                             </div>
@@ -246,14 +239,14 @@
                             </div>
                             <div v-if="H_input_select==1">
                                 <div class="ts action input">
-                                    <input type="text" v-model="H_path" placeholder="檔案路徑(json檔)">
+                                    <input type="text" v-model="H_path" placeholder="檔案路徑(json檔)" />
                                     <button onclick="data_view.H_data=CCmain.readFile(data_view.H_path);H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">讀取</button>
                                 </div>
                             </div>
                             <div v-else-if="H_input_select==2">
                                 <div class="ts action input">
-                                    <input type="text" v-model="H_data" placeholder="輸入數列(ex:1,30,5)">
+                                    <input type="text" v-model="H_data" placeholder="輸入數列(ex:1,30,5)" />
                                     <button onclick="data_view.H_data=CCmain.tranData(data_view.H_data);H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">輸入</button>
                                 </div>
@@ -273,17 +266,17 @@
                         <p>
                             <div v-if="H_select_select==0">
                                 <div class="ts action input">
-                                    <input type="number" v-model="H_mark" placeholder="標記特定數值">
+                                    <input type="number" v-model="H_mark" placeholder="標記特定數值" />
                                     <button onclick="H_data.searchValue(data_view.H_mark);" class="ts button">標記</button>
                                 </div>
                             </div>
                             <div v-else-if="H_select_select==1">
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
-                                        <input type="number" v-model="H_mark_x1" min='0' placeholder="從x1">
+                                        <input type="number" v-model="H_mark_x1" min='0' placeholder="從x1" />
                                     </div>
                                     <div class="ts input">
-                                        <input type="number" v-model="H_mark_x2" min='0' placeholder="到x2">
+                                        <input type="number" v-model="H_mark_x2" min='0' placeholder="到x2" />
                                         <button onclick="H_data.markSelect(data_view.H_mark_x1,data_view.H_mark_x2);" class="ts button">標記</button>
                                     </div>
                                 </div>
@@ -294,7 +287,7 @@
                         <p>
                             <div class="ts vertical inputs">
                                 <div class="ts input">
-                                    <input type="number" v-model="H_change_value" placeholder="增加或減少標記值">
+                                    <input type="number" v-model="H_change_value" placeholder="增加或減少標記值" />
                                     <button onclick="H_data.changeValue(data_view.H_change_value);data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));"
                                         class="ts button">確定</button>
                                 </div>
@@ -339,20 +332,20 @@
                                 <div class="ts action input">
                                     <div class="ts grid">
                                         <div class="five wide column">
-                                            背景:<input type="color" v-model="H_set_data.colorset.background">
+                                            背景:<input type="color" v-model="H_set_data.colorset.background" />
                                         </div>
                                         <div class="five wide column">
-                                            &nbsp;X軸:<input type="color" v-model="H_set_data.colorset.X_axis">
+                                            &nbsp;X軸:<input type="color" v-model="H_set_data.colorset.X_axis" />
                                         </div>
                                         <div class="five wide column">
-                                            &nbsp;Y軸:<input type="color" v-model="H_set_data.colorset.Y_axis">
+                                            &nbsp;Y軸:<input type="color" v-model="H_set_data.colorset.Y_axis" />
                                         </div>
                                         <div class="one wide column"></div>
                                         <div class="five wide column">
-                                            資料:<input type="color" v-model="H_set_data.colorset.dataBar">
+                                            資料:<input type="color" v-model="H_set_data.colorset.dataBar" />
                                         </div>
                                         <div class="five wide column">
-                                            標記:<input type="color" v-model="H_set_data.colorset.mark">
+                                            標記:<input type="color" v-model="H_set_data.colorset.mark" />
                                         </div>
                                         <div class="six wide column">
                                             <button onclick='H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, "H", colortrf(data_view.H_set_data.colorset));' class="ts primary tiny button">應用</button>
@@ -363,10 +356,10 @@
                             <div v-else-if="H_set_select==1">
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
-                                        寬度:<input type="number" v-model="H_set_data.width" min='0' placeholder="顯示寬度">
+                                        寬度:<input type="number" v-model="H_set_data.width" min='0' placeholder="顯示寬度" />
                                     </div>
                                     <div class="ts input">
-                                        高度:<input type="number" v-model="H_set_data.height" min='0' placeholder="顯示高度">
+                                        高度:<input type="number" v-model="H_set_data.height" min='0' placeholder="顯示高度" />
                                         <button onclick='H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, "H", colortrf(data_view.H_set_data.colorset));' class="ts primary tiny button">應用</button>
                                     </div>
 
@@ -375,10 +368,10 @@
                             <div v-else-if="H_set_select==2">
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
-                                        移動:<input type="number" v-model="H_set_shiftSpeed" min='0' placeholder="移動速度">
+                                        移動:<input type="number" v-model="H_set_shiftSpeed" min='0' placeholder="移動速度" />
                                     </div>
                                     <div class="ts input">
-                                        縮放:<input type="number" v-model="H_set_enlargeRate" min='0' placeholder="縮放倍率">
+                                        縮放:<input type="number" v-model="H_set_enlargeRate" min='0' placeholder="縮放倍率" />
                                     </div>
 
                                 </div>
@@ -401,6 +394,8 @@
                         <button v-on:click=" Answer_select=false; Answer_save=true; Answer_set=false;" class="ts negative button" v-bind:class="{active:Answer_save}">儲存</button>
                         <div class="or" data-text="or"></div>
                         <button v-on:click="Answer_select=false;  Answer_save=false; Answer_set=true;" class="ts info button" v-bind:class="{active:Answer_set}">設定</button>
+                        <div class="or" data-text="or"></div>
+                        <button onclick="buildWin()" class="ts primary button">查看頻率響應</a>
                     </div>
                 </p>
                 <p>
@@ -408,278 +403,280 @@
                         <p>
                             <div class="ts buttons">
                                 <button v-on:click="Answer_select_select=0" class="ts button" v-bind:class="{active:Answer_select_select==0}">數值標記</button>
-                                <div class="or" data-text="or"></div>
-                                <button v-on:click="Answer_select_select=1" class="ts button" v-bind:class="{active:Answer_select_select==1}">位置標記</button>
-                                <div class="or" data-text="or"></div>
-                                <button class="ts button" onclick="AnswerData.reset_Mark();">清除標記</button>
-                            </div>
-                        </p>
-                        <p>
-                            <div v-if="Answer_select_select==0">
-                                <div class="ts action input">
-                                    <input type="number" v-model="Answer_mark" placeholder="標記特定數值">
-                                    <button onclick="AnswerData.searchValue(data_view.Answer_mark);" class="ts button">標記</button>
-                                </div>
-                            </div>
-                            <div v-else-if="Answer_select_select==1">
-                                <div class="ts vertical inputs">
-                                    <div class="ts input">
-                                        <input type="number" v-model="Answer_mark_x1" min='0' placeholder="從x1">
-                                    </div>
-                                    <div class="ts input">
-                                        <input type="number" v-model="Answer_mark_x2" min='0' placeholder="到x2">
-                                        <button onclick="AnswerData.markSelect(data_view.Answer_mark_x1,data_view.Answer_mark_x2);" class="ts button">標記</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </p>
+                        <div class="or" data-text="or"></div>
+                        <button v-on:click="Answer_select_select=1" class="ts button" v-bind:class="{active:Answer_select_select==1}">位置標記</button>
+                        <div class="or" data-text="or"></div>
+                        <button class="ts button" onclick="AnswerData.reset_Mark();">清除標記</button>
                     </div>
-                    <div v-else-if="Answer_save==true">
-                        <p>
-                            <div class="ts buttons">
-                                <button v-on:click="Answer_save_select=0" class="ts button" v-bind:class="{active:Answer_save_select==0}">數值</button>
-                                <div class="or" data-text="or"></div>
-                                <button v-on:click="Answer_save_select=1" class="ts button" v-bind:class="{active:Answer_save_select==1}">圖片</button>
-                            </div>
-                        </p>
-                        <p>
-                            <div v-if="Answer_save_select==0">
-                                <div class="ts action input">
-                                    <button onclick="CCmain.printFile(data_view.AnswerData);" class="ts button">確定儲存</button>
-                                </div>
-                            </div>
-                            <div v-else-if="Answer_save_select==1">
-                                <div class="ts action input">
-                                    <button onclick="AnswerData.saveView();" class="ts button">確定儲存</button>
-                                </div>
-                            </div>
-                        </p>
+                </p>
+                <p>
+                    <div v-if="Answer_select_select==0">
+                        <div class="ts action input">
+                            <input type="number" v-model="Answer_mark" placeholder="標記特定數值" />
+                            <button onclick="AnswerData.searchValue(data_view.Answer_mark);" class="ts button">標記</button>
+                        </div>
                     </div>
-                    <div v-else-if="Answer_set==true">
-                        <p>
-                            <div class="ts buttons">
-                                <button v-on:click="Answer_set_select=0" class="ts button" v-bind:class="{active:Answer_set_select==0}">顏色</button>
-                                <div class="or" data-text="or"></div>
-                                <button v-on:click="Answer_set_select=1" class="ts button" v-bind:class="{active:Answer_set_select==1}">大小</button>
-                                <div class="or" data-text="or"></div>
-                                <button v-on:click="Answer_set_select=2" class="ts button" v-bind:class="{active:Answer_set_select==2}">操控</button>
-                                <div class="or" data-text="or"></div>
-                                <button v-on:click="Answer_set_save();" class="ts button">儲存</button>
+                    <div v-else-if="Answer_select_select==1">
+                        <div class="ts vertical inputs">
+                            <div class="ts input">
+                                <input type="number" v-model="Answer_mark_x1" min='0' placeholder="從x1" />
                             </div>
-                        </p>
-                        <p>
-                            <div v-if="Answer_set_select==0">
-                                <div class="ts action input">
-                                    <div class="ts grid">
-                                        <div class="five wide column">
-                                            背景:<input type="color" v-model="Answer_set_data.colorset.background">
-                                        </div>
-                                        <div class="five wide column">
-                                            &nbsp;X軸:<input type="color" v-model="Answer_set_data.colorset.X_axis">
-                                        </div>
-                                        <div class="five wide column">
-                                            &nbsp;Y軸:<input type="color" v-model="Answer_set_data.colorset.Y_axis">
-                                        </div>
-                                        <div class="one wide column"></div>
-                                        <div class="five wide column">
-                                            資料:<input type="color" v-model="Answer_set_data.colorset.dataBar">
-                                        </div>
-                                        <div class="five wide column">
-                                            標記:<input type="color" v-model="Answer_set_data.colorset.mark">
-                                        </div>
-                                        <div class="six wide column">
-                                            <button onclick='AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, "Answer", colortrf(data_view.Answer_set_data.colorset));' class="ts primary tiny button">應用</button>
-                                        </div>
-                                    </div>
-                                </div>
+                            <div class="ts input">
+                                <input type="number" v-model="Answer_mark_x2" min='0' placeholder="到x2" />
+                                <button onclick="AnswerData.markSelect(data_view.Answer_mark_x1,data_view.Answer_mark_x2);" class="ts button">標記</button>
                             </div>
-                            <div v-else-if="Answer_set_select==1">
-                                <div class="ts vertical inputs">
-                                    <div class="ts input">
-                                        寬度:<input type="number" v-model="Answer_set_data.width" min='0' placeholder="顯示寬度">
-                                    </div>
-                                    <div class="ts input">
-                                        高度:<input type="number" v-model="Answer_set_data.height" min='0' placeholder="顯示高度">
-                                        <button onclick='AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, "Answer", colortrf(data_view.Answer_set_data.colorset));' class="ts primary tiny button">應用</button>
-                                    </div>
-                                </div>
-                            </div>
-                            <div v-else-if="Answer_set_select==2">
-                                <div class="ts vertical inputs">
-                                    <div class="ts input">
-                                        移動:<input type="number" v-model="Answer_set_shiftSpeed" min='0' placeholder="移動速度">
-                                    </div>
-                                    <div class="ts input">
-                                        縮放:<input type="number" v-model="Answer_set_enlargeRate" min='0' placeholder="縮放倍率">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </p>
+                        </div>
                     </div>
                 </p>
             </div>
-        </div>
-        <div class="eleven wide column">
-            <div id="Answer"></div>
+            <div v-else-if="Answer_save==true">
+                <p>
+                    <div class="ts buttons">
+                        <button v-on:click="Answer_save_select=0" class="ts button" v-bind:class="{active:Answer_save_select==0}">數值</button>
+                        <div class="or" data-text="or"></div>
+                        <button v-on:click="Answer_save_select=1" class="ts button" v-bind:class="{active:Answer_save_select==1}">圖片</button>
+                    </div>
+                </p>
+                <p>
+                    <div v-if="Answer_save_select==0">
+                        <div class="ts action input">
+                            <button onclick="CCmain.printFile(data_view.AnswerData);" class="ts button">確定儲存</button>
+                        </div>
+                    </div>
+                    <div v-else-if="Answer_save_select==1">
+                        <div class="ts action input">
+                            <button onclick="AnswerData.saveView();" class="ts button">確定儲存</button>
+                        </div>
+                    </div>
+                </p>
+            </div>
+            <div v-else-if="Answer_set==true">
+                <p>
+                    <div class="ts buttons">
+                        <button v-on:click="Answer_set_select=0" class="ts button" v-bind:class="{active:Answer_set_select==0}">顏色</button>
+                        <div class="or" data-text="or"></div>
+                        <button v-on:click="Answer_set_select=1" class="ts button" v-bind:class="{active:Answer_set_select==1}">大小</button>
+                        <div class="or" data-text="or"></div>
+                        <button v-on:click="Answer_set_select=2" class="ts button" v-bind:class="{active:Answer_set_select==2}">操控</button>
+                        <div class="or" data-text="or"></div>
+                        <button v-on:click="Answer_set_save();" class="ts button">儲存</button>
+                    </div>
+                </p>
+                <p>
+                    <div v-if="Answer_set_select==0">
+                        <div class="ts action input">
+                            <div class="ts grid">
+                                <div class="five wide column">
+                                    背景:<input type="color" v-model="Answer_set_data.colorset.background" />
+                                </div>
+                                <div class="five wide column">
+                                    &nbsp;X軸:<input type="color" v-model="Answer_set_data.colorset.X_axis" />
+                                </div>
+                                <div class="five wide column">
+                                    &nbsp;Y軸:<input type="color" v-model="Answer_set_data.colorset.Y_axis" />
+                                </div>
+                                <div class="one wide column"></div>
+                                <div class="five wide column">
+                                    資料:<input type="color" v-model="Answer_set_data.colorset.dataBar" />
+                                </div>
+                                <div class="five wide column">
+                                    標記:<input type="color" v-model="Answer_set_data.colorset.mark" />
+                                </div>
+                                <div class="six wide column">
+                                    <button onclick='AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, "Answer", colortrf(data_view.Answer_set_data.colorset));' class="ts primary tiny button">應用</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else-if="Answer_set_select==1">
+                        <div class="ts vertical inputs">
+                            <div class="ts input">
+                                寬度:<input type="number" v-model="Answer_set_data.width" min='0' placeholder="顯示寬度" />
+                            </div>
+                            <div class="ts input">
+                                高度:<input type="number" v-model="Answer_set_data.height" min='0' placeholder="顯示高度" />
+                                <button onclick='AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, "Answer", colortrf(data_view.Answer_set_data.colorset));' class="ts primary tiny button">應用</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else-if="Answer_set_select==2">
+                        <div class="ts vertical inputs">
+                            <div class="ts input">
+                                移動:<input type="number" v-model="Answer_set_shiftSpeed" min='0' placeholder="移動速度" />
+                            </div>
+                            <div class="ts input">
+                                縮放:<input type="number" v-model="Answer_set_enlargeRate" min='0' placeholder="縮放倍率" />
+                            </div>
+                        </div>
+                    </div>
+                </p>
+            </div>
+            </p>
         </div>
     </div>
-    <script>
-        var data_view = new Vue({
-            el: '#data',
-            data: {
-                X_data: null,
-                X_tool: true,
-                /***/
-                X_input: true,
-                X_input_select: 0,
-                X_path: null,
-                /***/
-                X_select: false,
-                X_select_select: 0,
-                X_mark: null,
-                X_mark_value: null,
-                X_mark_x1: null,
-                X_mark_x2: null,
-                /***/
-                X_change: false,
-                X_change_value: null,
-                /***/
-                X_save: false,
-                X_save_select: 0,
-                /***/
-                X_set: false,
-                X_set_select: 0,
-                X_set_select_color: 0,
-                X_set_data: null,
-                X_set_shiftSpeed: 1,
-                X_set_enlargeRate: 2,
-                X_set_save: function() {
-                    let __data__ = CCmain.readFile("./resources/app/set.json");
-                    __data__["X"] = data_view.X_set_data;
-                    fs.writeFile("./resources/app/set.json", JSON.stringify(__data__), (err) => {
-                        if (err) throw err;
-                        console.log('It\'s saved!');
-                        alert('It\'s saved!');
-                    });
-                },
-                /********/
-                H_data: null,
-                H_tool: true,
-                /***/
-                H_input: true,
-                H_input_select: 0,
-                H_path: null,
-                /***/
-                H_select: false,
-                H_select_select: 0,
-                H_mark: null,
-                H_mark_value: null,
-                H_mark_x1: null,
-                H_mark_x2: null,
-                /***/
-                H_change: false,
-                H_change_value: null,
-                /***/
-                H_save: false,
-                H_save_select: 0,
-                /***/
-                H_set: false,
-                H_set_select: 0,
-                H_set_select_color: 0,
-                H_set_data: null,
-                H_set_shiftSpeed: 1,
-                H_set_enlargeRate: 2,
-                H_set_save: function() {
-                    let __data__ = CCmain.readFile("./resources/app/set.json");
-                    __data__["H"] = data_view.H_set_data;
-                    fs.writeFile("./resources/app/set.json", JSON.stringify(__data__), (err) => {
-                        if (err) throw err;
-                        console.log('It\'s saved!');
-                        alert('It\'s saved!');
-                    });
-                },
-                /********/
-                AnswerData: null,
-                Answer_tool: true,
-                /***/
-                Answer_select: true,
-                Answer_select_select: 0,
-                Answer_mark: null,
-                Answer_mark_value: null,
-                Answer_mark_x1: null,
-                Answer_mark_x2: null,
-                /***/
-                Answer_save: false,
-                Answer_save_select: 0,
-                /***/
-                Answer_set: false,
-                Answer_set_select: 0,
-                Answer_set_select_color: 0,
-                Answer_set_data: null,
-                Answer_set_shiftSpeed: 1,
-                Answer_set_enlargeRate: 2,
-                Answer_set_save: function() {
-                    let __data__ = CCmain.readFile("./resources/app/set.json");
-                    __data__["Answer"] = data_view.Answer_set_data;
-                    fs.writeFile("./resources/app/set.json", JSON.stringify(__data__), (err) => {
-                        if (err) throw err;
-                        console.log('It\'s saved!');
-                        alert('It\'s saved!');
-                    });
-                }
+    <div class="eleven wide column">
+        <div id="Answer"></div>
+    </div>
+    </div>
+</body>
+<script>
+    var data_view = new Vue({
+        el: '#data',
+        data: {
+            X_data: null,
+            X_tool: true,
+            /***/
+            X_input: true,
+            X_input_select: 0,
+            X_path: null,
+            /***/
+            X_select: false,
+            X_select_select: 0,
+            X_mark: null,
+            X_mark_value: null,
+            X_mark_x1: null,
+            X_mark_x2: null,
+            /***/
+            X_change: false,
+            X_change_value: null,
+            /***/
+            X_save: false,
+            X_save_select: 0,
+            /***/
+            X_set: false,
+            X_set_select: 0,
+            X_set_select_color: 0,
+            X_set_data: null,
+            X_set_shiftSpeed: 1,
+            X_set_enlargeRate: 2,
+
+            /********/
+            H_data: null,
+            H_tool: true,
+            /***/
+            H_input: true,
+            H_input_select: 0,
+            H_path: null,
+            /***/
+            H_select: false,
+            H_select_select: 0,
+            H_mark: null,
+            H_mark_value: null,
+            H_mark_x1: null,
+            H_mark_x2: null,
+            /***/
+            H_change: false,
+            H_change_value: null,
+            /***/
+            H_save: false,
+            H_save_select: 0,
+            /***/
+            H_set: false,
+            H_set_select: 0,
+            H_set_select_color: 0,
+            H_set_data: null,
+            H_set_shiftSpeed: 1,
+            H_set_enlargeRate: 2,
+
+            /********/
+            AnswerData: null,
+            Answer_tool: true,
+            /***/
+            Answer_select: true,
+            Answer_select_select: 0,
+            Answer_mark: null,
+            Answer_mark_value: null,
+            Answer_mark_x1: null,
+            Answer_mark_x2: null,
+            /***/
+            Answer_save: false,
+            Answer_save_select: 0,
+            /***/
+            Answer_set: false,
+            Answer_set_select: 0,
+            Answer_set_select_color: 0,
+            Answer_set_data: null,
+            Answer_set_shiftSpeed: 1,
+            Answer_set_enlargeRate: 2
+        },
+        methods: {
+            X_set_save: function() {
+                let __data__ = CCmain.readFile("./resources/app/set.json");
+                __data__["X"] = data_view.X_set_data;
+                fs.writeFile("./resources/app/set.json", JSON.stringify(__data__), (err) => {
+                    if (err) throw err;
+                    console.log('It\'s saved!');
+                    alert('It\'s saved!');
+                });
             },
-            methods: {
-                X_loader__: function() {
-                    let X_loader = document.getElementById('X_loader');
-                    X_loader.ondragover = function() {
-                        return false;
-                    };
-                    X_loader.ondragleave = X_loader.ondragend = function() {
-                        return false;
-                    };
-                    X_loader.ondrop = function(e) {
-                        e.preventDefault();
-                        let file = e.dataTransfer.files[0];
-                        console.log(file.path);
-                        if (file.path.split(".").pop() != "json") {
-                            alert("檔案類型錯誤");
-                        } else {
-                            data_view.X_data = CCmain.readFile(file.path);
-                            X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));
-                            data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);
-                            AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));
-                        }
-                        return false;
-                    };
-                },
-                H_loader__: function() {
-                    let H_loader = document.getElementById('H_loader');
-                    H_loader.ondragover = function() {
-                        return false;
-                    };
-                    H_loader.ondragleave = H_loader.ondragend = function() {
-                        return false;
-                    };
-                    H_loader.ondrop = function(e) {
-                        e.preventDefault();
-                        let file = e.dataTransfer.files[0];
-                        console.log(file.path);
-                        if (file.path.split(".").pop() != "json") {
-                            alert("檔案類型錯誤");
-                        } else {
-                            data_view.H_data = CCmain.readFile(file.path);
-                            H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));
-                            data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);
-                            AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));
-                        }
-                        return false;
-                    };
-                }
+            H_set_save: function() {
+                let __data__ = CCmain.readFile("./resources/app/set.json");
+                __data__["H"] = data_view.H_set_data;
+                fs.writeFile("./resources/app/set.json", JSON.stringify(__data__), (err) => {
+                    if (err) throw err;
+                    console.log('It\'s saved!');
+                    alert('It\'s saved!');
+                });
+            },
+            Answer_set_save: function() {
+                let __data__ = CCmain.readFile("./resources/app/set.json");
+                __data__["Answer"] = data_view.Answer_set_data;
+                fs.writeFile("./resources/app/set.json", JSON.stringify(__data__), (err) => {
+                    if (err) throw err;
+                    console.log('It\'s saved!');
+                    alert('It\'s saved!');
+                });
+            },
+            X_loader__: function() {
+                let X_loader = document.getElementById('X_loader');
+                X_loader.ondragover = function() {
+                    return false;
+                };
+                X_loader.ondragleave = X_loader.ondragend = function() {
+                    return false;
+                };
+                X_loader.ondrop = function(e) {
+                    e.preventDefault();
+                    let file = e.dataTransfer.files[0];
+                    console.log(file.path);
+                    if (file.path.split(".").pop() != "json") {
+                        alert("檔案類型錯誤");
+                    } else {
+                        data_view.X_data = CCmain.readFile(file.path);
+                        X_data.setView(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, 'X', colortrf(data_view.X_set_data.colorset));
+                        data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);
+                        AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));
+                    }
+                    return false;
+                };
+            },
+            H_loader__: function() {
+                let H_loader = document.getElementById('H_loader');
+                H_loader.ondragover = function() {
+                    return false;
+                };
+                H_loader.ondragleave = H_loader.ondragend = function() {
+                    return false;
+                };
+                H_loader.ondrop = function(e) {
+                    e.preventDefault();
+                    let file = e.dataTransfer.files[0];
+                    console.log(file.path);
+                    if (file.path.split(".").pop() != "json") {
+                        alert("檔案類型錯誤");
+                    } else {
+                        data_view.H_data = CCmain.readFile(file.path);
+                        H_data.setView(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, 'H', colortrf(data_view.H_set_data.colorset));
+                        data_view.AnswerData = CCmain.Convolution(data_view.X_data, data_view.H_data);
+                        AnswerData.setView(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, 'Answer', colortrf(data_view.Answer_set_data.colorset));
+                    }
+                    return false;
+                };
             }
-        });
-        if (!fs.existsSync("./resources/app/set.json")) {
-            fs.writeFile("./resources/app/set.json", `{
+        }
+    });
+    if (!fs.existsSync("./resources/app/set.json")) {
+        fs.writeFile("./resources/app/set.json", `{
     "X": {
         "width": 800,
         "height": 250,
@@ -717,58 +714,92 @@
         }
     }
 }`, (err) => {
-                if (err) throw err;
-            });
-        };
-        data_view.X_set_data = CCmain.readFile("./resources/app/set.json")["X"] || {};
-        data_view.X_set_select_color = data_view.X_set_data.colorset.background;
-        data_view.H_set_data = CCmain.readFile("./resources/app/set.json")["H"] || {};
-        data_view.H_set_select_color = data_view.H_set_data.colorset.background;
-        data_view.Answer_set_data = CCmain.readFile("./resources/app/set.json")["Answer"] || {};
-        data_view.Answer_set_select_color = data_view.Answer_set_data.colorset.background;
-        data_view.X_loader__();
-        data_view.H_loader__();
-    </script>
-    <script>
-        let colortrf = function(color_obj) {
-            let temp = {};
-            temp.background = "0x" + color_obj.background.split("#")[1];
-            temp.X_axis = "0x" + color_obj.X_axis.split("#")[1];
-            temp.Y_axis = "0x" + color_obj.Y_axis.split("#")[1];
-            temp.dataBar = "0x" + color_obj.dataBar.split("#")[1];
-            temp.mark = "0x" + color_obj.mark.split("#")[1];
-            return temp;
+            if (err) throw err;
+        });
+    };
+    data_view.X_set_data = CCmain.readFile("./resources/app/set.json")["X"] || {};
+    data_view.X_set_select_color = data_view.X_set_data.colorset.background;
+    data_view.H_set_data = CCmain.readFile("./resources/app/set.json")["H"] || {};
+    data_view.H_set_select_color = data_view.H_set_data.colorset.background;
+    data_view.Answer_set_data = CCmain.readFile("./resources/app/set.json")["Answer"] || {};
+    data_view.Answer_set_select_color = data_view.Answer_set_data.colorset.background;
+    data_view.X_loader__();
+    data_view.H_loader__();
+</script>
+<script>
+    let colortrf = function(color_obj) {
+        let temp = {};
+        temp.background = "0x" + color_obj.background.split("#")[1];
+        temp.X_axis = "0x" + color_obj.X_axis.split("#")[1];
+        temp.Y_axis = "0x" + color_obj.Y_axis.split("#")[1];
+        temp.dataBar = "0x" + color_obj.dataBar.split("#")[1];
+        temp.mark = "0x" + color_obj.mark.split("#")[1];
+        return temp;
+    }
+    let X_data;
+    let H_data;
+    let AnswerData;
+
+    X_data = new CCmain.viewData(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, "X", colortrf(data_view.X_set_data.colorset));
+    H_data = new CCmain.viewData(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, "H", colortrf(data_view.H_set_data.colorset));
+    AnswerData = new CCmain.viewData(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, "Answer", colortrf(data_view.Answer_set_data.colorset));
+
+    keyboardJS.bind("a", function() {
+        X_data.viewShift(-1 * data_view.X_set_shiftSpeed);
+        H_data.viewShift(-1 * data_view.H_set_shiftSpeed);
+        AnswerData.viewShift(-1 * data_view.Answer_set_shiftSpeed);
+    });
+    keyboardJS.bind("d", function() {
+        X_data.viewShift(data_view.X_set_shiftSpeed);
+        H_data.viewShift(data_view.H_set_shiftSpeed);
+        AnswerData.viewShift(data_view.Answer_set_shiftSpeed);
+    });
+    keyboardJS.bind("w", function() {
+        X_data.enlarge(data_view.X_set_enlargeRate);
+        H_data.enlarge(data_view.H_set_enlargeRate);
+        AnswerData.enlarge(data_view.Answer_set_enlargeRate);
+    });
+    keyboardJS.bind("s", function() {
+        X_data.enlarge(1 / data_view.X_set_enlargeRate);
+        H_data.enlarge(1 / data_view.H_set_enlargeRate);
+        AnswerData.enlarge(1 / data_view.Answer_set_enlargeRate);
+    });
+    //CCmain.printFile(AnswerData);
+</script>
+<script>
+    let buildWin = function() {
+        // Or in the renderer process.
+        const BrowserWindow = require('electron').remote.BrowserWindow;
+        var win = new BrowserWindow({
+            width: 1300,
+            height: 950,
+            show: false
+        });
+        win.on('closed', function() {
+            win = null;
+        });
+        //win.openDevTools();
+        win.loadURL('file://' + __dirname + '/FrequencyResponse.html');
+        win.show();
+    }
+    let fr = new BroadcastChannel('FrequencyResponse');
+    fr.onmessage = function(ev) {
+        if (ev.data == "ready") {
+            fr.postMessage(JSON.stringify({
+                "X_data": data_view.X_data,
+                "H_data": data_view.H_data,
+                "AnswerData": data_view.AnswerData,
+            }));
+            console.log(ev.data)
+        } else {
+            console.log(ev.data)
         }
-        let X_data;
-        let H_data;
-        let AnswerData;
-
-        X_data = new CCmain.viewData(data_view.X_data, data_view.X_set_data.width, data_view.X_set_data.height, data_view.X_set_data.width_rate, "X", colortrf(data_view.X_set_data.colorset));
-        H_data = new CCmain.viewData(data_view.H_data, data_view.H_set_data.width, data_view.H_set_data.height, data_view.H_set_data.width_rate, "H", colortrf(data_view.H_set_data.colorset));
-        AnswerData = new CCmain.viewData(data_view.AnswerData, data_view.Answer_set_data.width, data_view.Answer_set_data.height, data_view.Answer_set_data.width_rate, "Answer", colortrf(data_view.Answer_set_data.colorset));
-
-        keyboardJS.bind("a", function() {
-            X_data.viewShift(-1 * data_view.X_set_shiftSpeed);
-            H_data.viewShift(-1 * data_view.H_set_shiftSpeed);
-            AnswerData.viewShift(-1 * data_view.Answer_set_shiftSpeed);
-        });
-        keyboardJS.bind("d", function() {
-            X_data.viewShift(data_view.X_set_shiftSpeed);
-            H_data.viewShift(data_view.H_set_shiftSpeed);
-            AnswerData.viewShift(data_view.Answer_set_shiftSpeed);
-        });
-        keyboardJS.bind("w", function() {
-            X_data.enlarge(data_view.X_set_enlargeRate);
-            H_data.enlarge(data_view.H_set_enlargeRate);
-            AnswerData.enlarge(data_view.Answer_set_enlargeRate);
-        });
-        keyboardJS.bind("s", function() {
-            X_data.enlarge(1 / data_view.X_set_enlargeRate);
-            H_data.enlarge(1 / data_view.H_set_enlargeRate);
-            AnswerData.enlarge(1 / data_view.Answer_set_enlargeRate);
-        });
-        //CCmain.printFile(AnswerData);
-    </script>
-</body>
+    };
+</script>
+<script>
+    keyboardJS.bind("esc", function() {
+        window.location.href = "./start.html";
+    });
+</script>
 
 </html>

@@ -12,7 +12,7 @@ var PIXI = require("pixi.js");
 var keyboardJS = require("keyboardJS");
 var keytransform = new require("./include/keytransform.js");
 var CCmain = require("./include/CCmain.js");
-console.log(CCmain);
+var FFT = require("fft-js");
 
 const ipcRenderer = require('electron').ipcRenderer;
 keyboardJS.bind('f11', function() {

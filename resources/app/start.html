@@ -30,27 +30,20 @@
     </div>
     <script>
         let new_test = [];
-        keyboardJS.bind("n", new_test[0] = function() {
-            keyboardJS.bind("e", new_test[1] = function() {
-                keyboardJS.bind("w", new_test[2] = function() {
-                    keyboardJS.bind("t", new_test[3] = function() {
-                        keyboardJS.bind("e", new_test[4] = function() {
-                            keyboardJS.bind("s", new_test[5] = function() {
-                                keyboardJS.bind("t", new_test[6] = function() {
-                                    window.location.href = "./test.html";
-                                });
-                                keyboardJS.unbind("s", new_test[5]);
-                            });
-                            keyboardJS.unbind("e", new_test[4]);
-                        });
-                        keyboardJS.unbind("t", new_test[3]);
+
+        keyboardJS.bind("t", new_test[3] = function() {
+            keyboardJS.bind("e", new_test[4] = function() {
+                keyboardJS.bind("s", new_test[5] = function() {
+                    keyboardJS.bind("t", new_test[6] = function() {
+                        window.location.href = "./test.html";
                     });
-                    keyboardJS.unbind("w", new_test[2]);
+                    keyboardJS.unbind("s", new_test[5]);
                 });
-                keyboardJS.unbind("e", new_test[1]);
+                keyboardJS.unbind("e", new_test[4]);
             });
-            keyboardJS.unbind("n", new_test[0]);
+            keyboardJS.unbind("t", new_test[3]);
         });
+
         keyboardJS.bind("enter", function() {
             window.location.href = "./index.html";
         });

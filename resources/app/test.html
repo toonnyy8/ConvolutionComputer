@@ -10,24 +10,57 @@
     <!-- Tocas JS：模塊與 JavaScript 函式 -->
     <script src="./tocasUI/tocas.js"></script>
 </head>
-<div id="holder" class="ts basic dashed slate">
-    <span class="header">上傳圖片或影音</span>
-    <span class="description">將圖片拖拉至此處進行上傳。</span>
-</div>
+<input name="myFile" type="file">
+<audio id="myAudio" src="test.mp3"></audio>
+<a href="./ffff.html" target="_blank">link</a>
 <script>
-    var holder = document.getElementById('holder');
-    holder.ondragover = function() {
-        return false;
-    };
-    holder.ondragleave = holder.ondragend = function() {
-        return false;
-    };
-    holder.ondrop = function(e) {
-        e.preventDefault();
-        var file = e.dataTransfer.files[0];
-        console.log('File you dragged here is', file.path);
-        return false;
-    };
+    /*window.AudioContext = window.AudioContext || window.webkitAudioContext || window.mozAudioContext;
+                                                                                                                                                    window.onload = function() {
+                                                                                                                                                        var ctx = new AudioContext();
+                                                                                                                                                        var audio = document.getElementById('myAudio');
+
+                                                                                                                                                        var audioSrc = ctx.createMediaElementSource(audio);
+                                                                                                                                                        var analyser = ctx.createAnalyser();
+                                                                                                                                                        // we have to connect the MediaElementSource with the analyser 
+                                                                                                                                                        audioSrc.connect(analyser);
+                                                                                                                                                        // we could configure the analyser: e.g. analyser.fftSize (for further infos read the spec)
+                                                                                                                                                        console.log(analyser)
+                                                                                                                                                            // frequencyBinCount tells you how many values you'll receive from the analyser
+                                                                                                                                                        var frequencyData = new Uint8Array(analyser.frequencyBinCount);
+
+                                                                                                                                                        // we're ready to receive some data!
+                                                                                                                                                        // loop
+                                                                                                                                                        function renderFrame() {
+                                                                                                                                                            requestAnimationFrame(renderFrame);
+                                                                                                                                                            // update data in frequencyData
+                                                                                                                                                            analyser.getByteFrequencyData(frequencyData);
+                                                                                                                                                            let temp = FFT.fft(frequencyData);
+                                                                                                                                                            console.log(frequencyData)
+                                                                                                                                                            console.log(temp)
+                                                                                                                                                                // render frame based on values in frequencyData
+                                                                                                                                                                // console.log(frequencyData)
+                                                                                                                                                        }
+                                                                                                                                                        audio.play();
+                                                                                                                                                        renderFrame();
+                                                                                                                                                    };*/
+    let temp = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, -2, 1, 1, 1, 1, -1, 1, 1, 1, 1, 1, 1, 1, -1, -3]
+    let temp2 = {};
+    temp2.X_F_energy = []
+    temp2.X_F_PhaseSngle = []
+    for (let i = 0; temp.length > Math.pow(2, i);) {
+        i++
+        if (temp.length < Math.pow(2, i)) {
+            for (let j = temp.length; j < Math.pow(2, i); j++) {
+                temp[j] = 0;
+            }
+        }
+    }
+    temp = FFT.fft(temp)
+    for (let i = 0; i < temp.length; i++) {
+        temp2.X_F_energy[i] = Math.sqrt(Math.pow(temp[i][0], 2) + Math.pow(temp[i][1], 2));
+        temp2.X_F_PhaseSngle[i] = temp[i][1] / temp[i][0];
+    }
+    console.log(temp2);
 </script>
 <script>
     keyboardJS.bind("esc", function() {
