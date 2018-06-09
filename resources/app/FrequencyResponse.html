@@ -148,6 +148,7 @@
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
                                         移動:<input type="number" v-model="X_set_shiftSpeed" min='0' placeholder="移動速度" />
+                                        <button onclick='X_data.viewShift(X_data.viewShift(0));' class="ts primary tiny button">回到原點</button>
                                     </div>
                                     <div class="ts input">
                                         縮放:<input type="number" v-model="X_set_enlargeRate" min='0' placeholder="縮放倍率" />
@@ -295,6 +296,7 @@
                                 <div class="ts vertical inputs">
                                     <div class="ts input">
                                         移動:<input type="number" v-model="H_set_shiftSpeed" min='0' placeholder="移動速度" />
+                                        <button onclick='H_data.viewShift(H_data.viewShift(0));' class="ts primary tiny button">回到原點</button>
                                     </div>
                                     <div class="ts input">
                                         縮放:<input type="number" v-model="H_set_enlargeRate" min='0' placeholder="縮放倍率" />
@@ -432,7 +434,7 @@
                                     <div class="ts input">
                                         寬度:<input type="number" v-model="Answer_set_data.width" min='0' placeholder="顯示寬度" />
                                     </div>
-                                    <div class="ts input">
+                                    <div style="white-space:nowrap;" class="ts input">
                                         高度:<input type="number" v-model="Answer_set_data.height" min='0' placeholder="顯示高度" />
                                         <button onclick='updatedofAnswer();' class="ts primary tiny button">應用</button>
                                     </div>
@@ -440,8 +442,9 @@
                             </div>
                             <div v-else-if="Answer_set_select==2">
                                 <div class="ts vertical inputs">
-                                    <div class="ts input">
+                                    <div style="white-space:nowrap;" class="ts input">
                                         移動:<input type="number" v-model="Answer_set_shiftSpeed" min='0' placeholder="移動速度" />
+                                        <button onclick='AnswerData.viewShift(AnswerData.viewShift(0));' class="ts primary tiny button">回到原點</button>
                                     </div>
                                     <div class="ts input">
                                         縮放:<input type="number" v-model="Answer_set_enlargeRate" min='0' placeholder="縮放倍率" />
@@ -691,7 +694,9 @@
         fr.postMessage("ready");
         fr.onmessage = function(ev) {
             let temp = JSON.parse(ev.data)
-
+            data_view.X_data = null;
+            data_view.X_F_energy = [];
+            data_view.X_F_PhaseSngle = [];
             data_view.X_data = temp["X_data"];
             for (let i = 0; data_view.X_data.length > Math.pow(2, i);) {
                 i++
@@ -708,6 +713,9 @@
             }
             updatedofX();
 
+            data_view.H_data = null;
+            data_view.H_F_energy = [];
+            data_view.H_F_PhaseSngle = [];
             data_view.H_data = temp["H_data"];
             for (let i = 0; data_view.H_data.length > Math.pow(2, i);) {
                 i++
@@ -724,6 +732,9 @@
             }
             updatedofH();
 
+            data_view.AnswerData = null;
+            data_view.Answer_F_energy = [];
+            data_view.Answer_F_PhaseSngle = [];
             data_view.AnswerData = temp["AnswerData"];
             for (let i = 0; data_view.AnswerData.length > Math.pow(2, i);) {
                 i++
