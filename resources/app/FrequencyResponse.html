@@ -704,7 +704,7 @@
             data_view.X_data = FFT.fft(data_view.X_data)
             for (let i = 0; i < data_view.X_data.length; i++) {
                 data_view.X_F_energy[i] = Math.sqrt(Math.pow(data_view.X_data[i][0], 2) + Math.pow(data_view.X_data[i][1], 2));
-                data_view.X_F_PhaseSngle[i] = data_view.X_data[i][1] / data_view.X_data[i][0];
+                data_view.X_F_PhaseSngle[i] = Math.atan(data_view.X_data[i][1] / data_view.X_data[i][0]);
             }
             updatedofX();
 
@@ -720,7 +720,7 @@
             data_view.H_data = FFT.fft(data_view.H_data)
             for (let i = 0; i < data_view.H_data.length; i++) {
                 data_view.H_F_energy[i] = Math.sqrt(Math.pow(data_view.H_data[i][0], 2) + Math.pow(data_view.H_data[i][1], 2));
-                data_view.H_F_PhaseSngle[i] = data_view.H_data[i][1] / data_view.H_data[i][0];
+                data_view.H_F_PhaseSngle[i] = Math.atan(data_view.H_data[i][1] / data_view.H_data[i][0]);
             }
             updatedofH();
 
@@ -736,7 +736,7 @@
             data_view.AnswerData = FFT.fft(data_view.AnswerData)
             for (let i = 0; i < data_view.AnswerData.length; i++) {
                 data_view.Answer_F_energy[i] = Math.sqrt(Math.pow(data_view.AnswerData[i][0], 2) + Math.pow(data_view.AnswerData[i][1], 2));
-                data_view.Answer_F_PhaseSngle[i] = data_view.AnswerData[i][1] / data_view.AnswerData[i][0];
+                data_view.Answer_F_PhaseSngle[i] = Math.atan(data_view.AnswerData[i][1] / data_view.AnswerData[i][0]);
             }
             updatedofAnswer();
 
