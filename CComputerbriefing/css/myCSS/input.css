@@ -1,0 +1,201 @@
+input,
+textarea {
+    font-size: 120%;
+    font-family: Source code pro, Arial, Microsoft JhengHei, Verdana, sans-serif;
+    color: #d8d8d8;
+    background-color: #494949;
+    border: 1px solid #494949;
+    border-radius: 5px;
+    padding: 0.5% 15px 0.5% 15px;
+    background-repeat: no-repeat;
+    background-position: 8px 9px;
+    display: block;
+    width: 100%;
+    min-width: 10%
+}
+
+inputtag {
+    font-size: 120%;
+    font-family: Source code pro, Arial, Microsoft JhengHei, Verdana, sans-serif;
+    color: #d8d8d8;
+    background-color: #494949;
+    border: 1px solid #494949;
+    border-radius: 5px 5px 0px 0px;
+    padding: 5px 15px 0px 15px;
+    background-repeat: no-repeat;
+    background-position: 8px 9px;
+}
+
+inputtag+input,
+inputtag+textarea {
+    font-size: 120%;
+    font-family: Source code pro, Arial, Microsoft JhengHei, Verdana, sans-serif;
+    color: #ffffff;
+    background-color: #777777;
+    border: 1px solid #777777;
+    border-radius: 0px 5px 5px 5px;
+    padding: 5px 15px 5px 15px;
+    background-repeat: no-repeat;
+    background-position: 8px 9px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+input:focus,
+input:hover,
+textarea:focus,
+textarea:hover {
+    color: #494949;
+    background-color: #d1d1d1;
+    border: 1px solid #d1d1d1;
+}
+
+input::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+    /* WebKit browsers */
+    color: rgb(197, 197, 197);
+}
+
+
+/*基礎button*/
+
+input[type="button"],
+input[type="submit"] {
+    font-size: 100%;
+    font-family: Source code pro, Arial, Microsoft JhengHei, Verdana, sans-serif;
+    text-align: center;
+    border: 2px solid #a7a7a7;
+    padding: 10px 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    color: #000000;
+    transition: 0.2s;
+    text-decoration: none;
+    width: auto;
+    min-width: auto;
+}
+
+input[type="button"]:hover,
+input[type="submit"]:hover {
+    border: 2px solid #000000;
+    background: #000000;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+input[type="button"]:active,
+input[type="submit"]:active {
+    border: 2px solid #a7a7a7;
+    background: #777158;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*主要*/
+
+input[type="button"].primary,
+input[type="submit"].primary {
+    text-align: center;
+    border: 2px solid #0097ee;
+    padding: 10px 30px;
+    background: #0097ee;
+    border-radius: 15px;
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+input[type="button"].primary:hover,
+input[type="submit"].primary:hover {
+    border: 2px solid #003d61;
+    background: #003d61;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+input[type="button"].primary:active,
+input[type="submit"].primary:active {
+    border: 2px solid #0083cf;
+    background: #0083cf;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*警告*/
+
+input[type="button"].warning,
+input[type="submit"].warning {
+    text-align: center;
+    border: 2px solid #ee7f00;
+    padding: 10px 30px;
+    background: #ee7f00;
+    border-radius: 15px;
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+input[type="button"].warning:hover,
+input[type="submit"].warning:hover {
+    border: 2px solid #ff0000;
+    background: #ff0000;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+input[type="button"].warning:active,
+input[type="submit"].warning:active {
+    border: 2px solid #dac936;
+    background: #dac936;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*資訊*/
+
+input[type="button"].info,
+input[type="submit"].info {
+    text-align: center;
+    border: 2px solid #7195a5;
+    padding: 10px 30px;
+    background: #7195a5;
+    border-radius: 15px;
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+input[type="button"].info:hover,
+input[type="submit"].info:hover {
+    border: 2px solid #54656d;
+    background: #54656d;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+input[type="button"].info:active,
+input[type="submit"].info:active {
+    border: 2px solid #476b7c;
+    background: #476b7c;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*大小*/
+
+input[type="button"].mini,
+input[type="submit"].mini {
+    border-width: 2px;
+    padding: 5px 15px;
+}
+
+input[type="button"].huge,
+input[type="submit"].huge {
+    font-size: 30px;
+    border-width: 2px;
+    padding: 10px 60px;
+}

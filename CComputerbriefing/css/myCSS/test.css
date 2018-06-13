@@ -1,0 +1,119 @@
+@import url("./grid.css");
+@import url("./button.css");
+@import url("./input.css");
+@import url("./position.css");
+* {
+    font-family: Arial, Microsoft JhengHei, Verdana, sans-serif;
+    color: #534435;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+    text-decoration-style: inherit;
+    font-style: oblique;
+    color: rgb(0, 83, 109);
+}
+
+a:active {
+    text-decoration: none;
+}
+
+header {
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    padding: 10px;
+    margin: 0px;
+    width: 100%;
+    background-color: #ffffff;
+}
+
+main[type="1"] {
+    margin-top: 50px;
+}
+
+main[type="2"],
+main {
+    margin-top: 100px;
+}
+
+main[type="3"] {
+    margin-top: 150px;
+}
+
+main[type="4"] {
+    margin-top: 200px;
+}
+
+main[type="5"] {
+    margin-top: 250px;
+}
+
+main[type="6"] {
+    margin-top: 300px;
+}
+
+main[type="7"] {
+    margin-top: 350px;
+}
+
+main[type="8"] {
+    margin-top: 400px;
+}
+
+main[type="9"] {
+    margin-top: 450px;
+}
+
+main[type="10"] {
+    margin-top: 500px;
+}
+
+main[type="11"] {
+    margin-top: 550px;
+}
+
+main[type="12"] {
+    margin-top: 600px;
+}
+
+main[type="13"] {
+    margin-top: 650px;
+}
+
+main[type="14"] {
+    margin-top: 700px;
+}
+
+main[type="15"] {
+    margin-top: 750px;
+}
+
+main[type="16"] {
+    margin-top: 800px;
+}
+
+main[type="17"] {
+    margin-top: 850px;
+}
+
+main[type="18"] {
+    margin-top: 900px;
+}
+
+main[type="19"] {
+    margin-top: 950px;
+}
+
+main[type="20"] {
+    margin-top: 1000px;
+}

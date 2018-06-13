@@ -87,8 +87,11 @@
                         </p>
                         <p>
                             <div v-if="X_save_select==0">
-                                <div class="ts action input">
-                                    <button onclick="CCmain.printFile(data_view.X_data);" class="ts button">確定儲存</button>
+                                <div v-if="X_display_select==0" class="ts action input">
+                                    <button onclick="CCmain.printFile(data_view.X_F_energy);" class="ts button">確定儲存</button>
+                                </div>
+                                <div v-else-if="X_display_select==1" class="ts action input">
+                                    <button onclick="CCmain.printFile(data_view.X_F_PhaseSngle);" class="ts button">確定儲存</button>
                                 </div>
                             </div>
                             <div v-else-if="X_save_select==1">
@@ -238,8 +241,11 @@
                         </p>
                         <p>
                             <div v-if="H_save_select==0">
-                                <div class="ts action input">
-                                    <button onclick="CCmain.printFile(data_view.H_data);" class="ts button">確定儲存</button>
+                                <div v-if="H_display_select==0" class="ts action input">
+                                    <button onclick="CCmain.printFile(data_view.H_F_energy);" class="ts button">確定儲存</button>
+                                </div>
+                                <div v-else-if="H_display_select==1" class="ts action input">
+                                    <button onclick="CCmain.printFile(data_view.H_F_PhaseSngle);" class="ts button">確定儲存</button>
                                 </div>
                             </div>
                             <div v-else-if="H_save_select==1">
@@ -387,8 +393,11 @@
                         </p>
                         <p>
                             <div v-if="Answer_save_select==0">
-                                <div class="ts action input">
-                                    <button onclick="CCmain.printFile(data_view.AnswerData);" class="ts button">確定儲存</button>
+                                <div v-if="Answer_display_select==0" class="ts action input">
+                                    <button onclick="CCmain.printFile(data_view.Answer_F_energy);" class="ts button">確定儲存</button>
+                                </div>
+                                <div v-if="Answer_display_select==1" class="ts action input">
+                                    <button onclick="CCmain.printFile(data_view.Answer_F_PhaseSngle);" class="ts button">確定儲存</button>
                                 </div>
                             </div>
                             <div v-else-if="Answer_save_select==1">

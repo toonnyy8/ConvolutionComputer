@@ -1,0 +1,126 @@
+/*基礎button*/
+
+button {
+    font-size: 100%;
+    font-family: Source code pro, Arial, Microsoft JhengHei, Verdana, sans-serif;
+    text-align: center;
+    border: 2px solid #a7a7a7;
+    padding: 10px 30px;
+    background: #ffffff;
+    border-radius: 15px;
+    color: #000000;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+button:hover {
+    border: 2px solid #000000;
+    background: #000000;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+button:active {
+    border: 2px solid #a7a7a7;
+    background: #777158;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*主要*/
+
+button.primary {
+    text-align: center;
+    border: 2px solid #0097ee;
+    padding: 10px 30px;
+    background: #0097ee;
+    border-radius: 15px;
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+button.primary:hover {
+    border: 2px solid #003d61;
+    background: #003d61;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+button.primary:active {
+    border: 2px solid #0083cf;
+    background: #0083cf;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*警告*/
+
+button.warning {
+    text-align: center;
+    border: 2px solid #ee7f00;
+    padding: 10px 30px;
+    background: #ee7f00;
+    border-radius: 15px;
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+button.warning:hover {
+    border: 2px solid #ff0000;
+    background: #ff0000;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+button.warning:active {
+    border: 2px solid #dac936;
+    background: #dac936;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*資訊*/
+
+button.info {
+    text-align: center;
+    border: 2px solid #7195a5;
+    padding: 10px 30px;
+    background: #7195a5;
+    border-radius: 15px;
+    color: #ffffff;
+    transition: 0.2s;
+    text-decoration: none;
+}
+
+button.info:hover {
+    border: 2px solid #54656d;
+    background: #54656d;
+    color: #ffffff;
+    transition: 0.2s;
+}
+
+button.info:active {
+    border: 2px solid #476b7c;
+    background: #476b7c;
+    color: #000000;
+    transition: 0.1s;
+}
+
+
+/*大小*/
+
+button.mini {
+    border-width: 2px;
+    padding: 5px 15px;
+}
+
+button.huge {
+    font-size: 30px;
+    border-width: 2px;
+    padding: 10px 60px;
+}

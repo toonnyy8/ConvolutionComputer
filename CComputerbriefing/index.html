@@ -5,8 +5,8 @@
     <meta charset="utf-8">
     <title>訊號與系統報告</title>
     <link rel="stylesheet" href="css/reveal.css">
-    <link rel="stylesheet" href="css/theme/white.css" id="theme">
-
+    <link rel="stylesheet" href="css/theme/black.css" id="theme">
+    <link rel="stylesheet" href="css/myCSS/grid.css">
     <!-- Code syntax highlighting -->
     <link rel="stylesheet" href="lib/css/zenburn.css">
 
@@ -14,6 +14,7 @@
     <!--[if lt IE 9]>
   <script src="lib/js/html5shiv.js"></script>
   <![endif]-->
+
 </head>
 
 <body>
@@ -25,10 +26,11 @@
 
             <!-- 開始 -->
             <section>
-                <h2>
-                    <span style="color: #1d639c">C</span>onvolution <span style="color: #1d639c">C</span>omputer
-                </h2>
-                <h6 class="fragment">簡稱<span style="color: #1d639c">CC</span></h6>
+                <h1 style="color: #ff0000">New</h6>
+                    <h2 class="fragment">
+                        <span style="color: #1d639c">C</span>onvolution <span style="color: #1d639c">C</span>omputer
+                    </h2>
+                    <h6 class="fragment">簡稱<span style="color: #ff0000">N</span><span style="color: #1d639c">CC</span></h6>
             </section>
 
             <!-- 載點 -->
@@ -36,11 +38,13 @@
                 <h2>
                     載點
                 </h2>
-                <a target="_blank" href="https://drive.google.com/file/d/18TSwbo_hmSXXR5az_QYsHroD7-g8rJhG/view?usp=sharing">windows 32位元版</a>
                 <br/>
-                <span>or</span>
+                <a target="_blank" href="https://github.com/toonnyy8/ConvolutionComputer/tree/0.2.0">windows 64位元版(github)</a>
                 <br/>
-                <a target="_blank" href="https://github.com/toonnyy8/ConvolutionComputer/tree/0.1.0">windows 64位元版(github)</a>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
             </section>
 
             <!-- 使用技術 -->
@@ -102,19 +106,26 @@
                 <p class="fragment">(眼睛有點痛)</p>
             </section>
 
+            <section>
+                <h3 style="color: #ffae00ea">特別致謝!!</h3>
+                <br/>
+                <div class="grid fragment">
+                    <grid class="fragment">
+                        沒有他
+                    </grid>
+                    <grid num="8">
+                        <h1 style="color: #00f7ff">fft-js</h1>
+                    </grid>
+                    <grid class="fragment">
+                        就沒有現在這份報告
+                    </grid>
+                </div>
+                <br/>
+                <a class="fragment" target="_blank" href="https://www.npmjs.com/package/fft-js">fft-js載點</a>
+            </section>
             <!-- 設計方法 -->
             <section>
                 <h2>設計方法</h2>
-            </section>
-
-            <section>
-                <h1>
-                    <b>X[n]</b>
-                    <b class="fragment">=></b>
-                    <b class="fragment">H[n]</b>
-                    <b class="fragment">=></b>
-                    <b class="fragment">Y[n]</b>
-                </h1>
             </section>
 
             <section>
@@ -123,7 +134,7 @@
             </section>
 
             <section>
-                <h3>計算捲機的程式碼</h3>
+                <h3>計算捲積的程式碼</h3>
                 <pre><code class="hljs js" data-trim contenteditable>
 for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
 {
@@ -140,68 +151,205 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
                     </code></pre>
             </section>
 
+            <section>
+                <h3>計算fft的程式碼</h3>
+                <pre><code class="hljs js" data-trim contenteditable>
+for (let i = 0; data.length > Math.pow(2, i);) {
+    i++
+    if (data.length < Math.pow(2, i)) {
+        for (let j = data.length; j < Math.pow(2, i); j++) {
+            data[j] = 0;
+        }
+    }
+}
+fft = FFT.fft(data)
+for (let i = 0; i < fft.length; i++) {
+    energy[i] = Math.sqrt(Math.pow(fft[i][0], 2) + Math.pow(fft[i][1], 2));
+    PhaseSngle[i] = Math.atan(fft[i][1] / fft[i][0]);
+}
+                        </code></pre>
+            </section>
+
+            <section>
+                <div class="grid">
+                    <grid>
+                        <b>X[n]</b>
+                        <h3>&dArr;</h3>
+                        <b>H[n]</b>
+                        <h3>&dArr;</h3>
+                        <b>Y[n]</b>
+                    </grid>
+                    <grid class="fragment" num="1">
+                        <h3>&rarr;</h3>
+                        <br/>
+                        <h3>&rarr;</h3>
+                        <br/>
+                        <h3>&rarr;</h3>
+                    </grid>
+                    <grid class="fragment" num="1">
+                        <h3>f</h3>
+                        <br/>
+                        <h3>f</h3>
+                        <br/>
+                        <h3>t</h3>
+                    </grid>
+                    <grid class="fragment" num="1">
+                        <h3>&rarr;</h3>
+                        <br/>
+                        <h3>&rarr;</h3>
+                        <br/>
+                        <h3>&rarr;</h3>
+                    </grid>
+                    <grid class="fragment">
+                        <b>X[&omega;]</b>
+                        <h3>&dArr;</h3>
+                        <b>H[&omega;]</b>
+                        <h3>&dArr;</h3>
+                        <b>Y[&omega;]</b>
+                    </grid>
+                </div>
+            </section>
+
             <!-- 製作過程中遇到的問題 -->
             <section>
                 <h2>製作過程中遇到的問題</h2>
             </section>
 
             <section>
-                <p>
-                    <b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b><b class="fragment">雷</b>
-                    <h1 class="fragment" style="color: #ffd000">JS</h1>
-                </p>
+                <h3 class="fragment">我是誰?</h3>
+                <h3 class="fragment">我從哪裡來?</h3>
+                <h3 class="fragment">我要到哪裡去?</h3>
             </section>
 
             <section>
-                <h2>當你拚死躲開了</h2>
-                <img class="fragment" width="80%" src="img/thunder.jpg">
+                <h4 style="color: #ffae00">感謝頻率響應跟離散傅立葉轉換讓我重新思考人生</h4>
+                <br/>
+                <h5 class="fragment">雖然</h5>
+                <h5 class="fragment">不管是人生還是專案</h5>
+                <h5 class="fragment">到最後都還是沒弄懂</h5>
             </section>
 
             <section>
-                <h2>你會發現腳邊全是</h2>
-                <img class="fragment" width="70%" src="img/landmine.jpg">
+                <h3>好!!</h3>
+                <br/>
+                <span class="fragment">悲傷的事說完了</span><span class="fragment">，說點<s>更悲傷的</s>正經事吧</span>
             </section>
 
             <section>
-                <h2>刺不刺激?? 精不精彩??</h2>
-                <h3 class="fragment">好了，再來說點認真的</h3>
+                <h3>問題 1.</h3>
+                <br/>
+                <span class="fragment">[
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span> ]
+                </span>
+                <br/>
+                <span class="fragment">與</span>
+                <br/>
+                <span class="fragment">[
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span> ]
+                </span>
+                <br/>
+                <br/>
+                <span class="fragment">DFT後不太一樣(?????</span>
             </section>
 
             <section>
-                <h2>
-                    遇過最神奇的問題應該是
-                </h2>
-                <h2>
-                    字串與整數的判別
-                </h2>
-                <h3 class="fragment">當你覺得應該傳遞的參數應該是 1+10=11</h3>
-                <h3 class="fragment">結果就成了 1+"10"="110"</h3>
+                <h3>
+                    以[<span style="color: #00b5bb">1</span>,
+                    <span style="color: #00b5bb">-1</span> ]為例
+                </h3>
+                <br/>
+                <span class="fragment">[
+                <span style="color: #00b5bb">1</span>,
+                <span style="color: #00b5bb">-1</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span> ]
+                </span>
+                <br/>
+                <span class="fragment">轉換為</span>
+                <br/>
+                <span class="fragment">[
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">1.414213562373095</span>,
+                <span style="color: #00b5bb">2</span>,
+                <span style="color: #00b5bb">1.4142135623730951</span> ]
+                </span>
             </section>
 
             <section>
-                <h2>
-                    接著是vue的渲染元素
-                </h2>
-                <b class="fragment">每當vue重新渲染畫面</b>
+                <span class="fragment">[
+                    <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">X</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0</span> ]
+                </span>
                 <br/>
-                <b class="fragment">元素就要重抓一次</b>
                 <br/>
-                <span class="fragment">但...</span> <span class="fragment">說來慚愧</span>
+                <span class="fragment">轉換為</span>
                 <br/>
-                <b class="fragment">我還是不知道怎麼讓他自動重抓元素</b>
+                <br/>
+                <span class="fragment">[
+                <span style="color: #00b5bb">0</span>,
+                <span style="color: #00b5bb">0.7653668647301795</span>,
+                <span style="color: #00b5bb">1.414213562373095</span>,
+                <span style="color: #00b5bb">1.8477590650225735</span>,
+                <span style="color: #00b5bb">2</span>,
+                <span style="color: #00b5bb">1.8477590650225735</span>,
+                <span style="color: #00b5bb">1.4142135623730951</span>,
+                <span style="color: #00b5bb">0.7653668647301797</span> ]
+                </span>
             </section>
 
             <section>
-                <h2>再來應該是排版問題</h2>
-                <b class="fragment">雖然用網頁做為基底設計UI已經算很方便了</b>
+                <h3>仔細觀察就會發現</h3>
+                <span class="fragment">兩者起伏是一樣的</span>
                 <br/>
                 <br/>
-                <b class="fragment">但</b>
-                <br/>
-                <br/>
-                <b class="fragment">總是會有不合群的元素到處亂跑</b>
+                <span class="fragment">這讓我開始思考第2個問題</span>
             </section>
 
+            <section>
+                <h3>問題 2.</h3>
+                <span class="fragment">DFT後最大的n代表多少</span>
+                <br/>
+                <b class="fragment">&dArr;</b>
+                <br/>
+                <span class="fragment">每一點的間格又代表多少</span>
+                <br/>
+                <b class="fragment">&dArr;</b>
+                <br/>
+                <b style="color: #ff0000" class="fragment">難道離散頻譜也是對連續頻譜取樣!?</b>
+            </section>
+
+            <section>
+                <h3>如果是</h3>
+                <span class="fragment">又要怎麼在最大頻率="無限"的連續頻譜取樣</span>
+                <br/>
+                <br/>
+                <span class="fragment">到這裡我又再度放棄思考了...</span>
+            </section>
+
+            <section>
+                <h3>有哪位好心人能解決我的疑惑的話</h3>
+                <br/>
+                <br/>
+                <span class="fragment">請在我demo完後再幫我解惑</span>
+                <br/>
+                <span class="fragment">不然我大概會直接放棄思考而跳過demo</span>
+            </section>
             <!-- 實際展示 -->
             <section>
                 <h2>實際展(炫)示(技)</h2>
@@ -244,16 +392,18 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
                 <a href="#step.5">設定</a>
                 <br/>
                 <a href="#step.6">其他</a>
+                <br/>
+                <a href="#step.7">頻率響應特別篇</a>
             </section>
 
             <section id="step.0">
-                <h3 style="color: #003e68">step.0</h3>
+                <h3 style="color: #1d639c">step.0</h3>
                 <img width="65%" src="./img/Instructions/step0.png">
                 <p class="fragment">按Enter進入程式</p>
             </section>
 
             <section id="step.1">
-                <h3 style="color: #003e68">step.1</h3>
+                <h3 style="color: #1d639c">step.1</h3>
                 <b class="fragment">讀取數據</b>
                 <br/>
                 <br/>
@@ -263,25 +413,25 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.1-1</h3>
+                <h3 style="color: #1d639c">step.1-1</h3>
                 <img src="./img/Instructions/step1_1.png">
                 <p class="fragment">拖曳檔案以讀取</p>
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.1-2</h3>
+                <h3 style="color: #1d639c">step.1-2</h3>
                 <img src="./img/Instructions/step1_2.png">
                 <p class="fragment">輸入檔案的絕對路徑以讀取</p>
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.1-3</h3>
+                <h3 style="color: #1d639c">step.1-3</h3>
                 <img src="./img/Instructions/step1_3.png">
                 <p class="fragment">手動輸入數值以讀取</p>
             </section>
 
             <section id="step.2">
-                <h3 style="color: #003e68">step.2</h3>
+                <h3 style="color: #1d639c">step.2</h3>
                 <b class="fragment">標記</b>
                 <br/>
                 <br/>
@@ -291,19 +441,19 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.2-1</h3>
+                <h3 style="color: #1d639c">step.2-1</h3>
                 <img src="./img/Instructions/step2_1.png">
                 <b class="fragment">會用輸入的<span style="color: #00a0e0">數值</span>作為目標進行<span style="color: #e07f00">標記</span></b>
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.2-2</h3>
+                <h3 style="color: #1d639c">step.2-2</h3>
                 <img src="./img/Instructions/step2_2.png">
                 <b class="fragment">會用輸入的<span style="color: #00a0e0">區域</span>作為目標進行<span style="color: #e07f00">標記</span></b>
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.2-3</h3>
+                <h3 style="color: #1d639c">step.2-3</h3>
                 <b><span style="color: #e07f00">標記</span>可重複疊加</b>
                 <br/>
                 <br/>
@@ -311,7 +461,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section id="step.3">
-                <h3 style="color: #003e68">step.3</h3>
+                <h3 style="color: #1d639c">step.3</h3>
                 <b class="fragment">變更數值</b>
                 <br/>
                 <br/>
@@ -321,14 +471,14 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.3</h3>
+                <h3 style="color: #1d639c">step.3</h3>
                 <img src="./img/Instructions/step3_1.png">
                 <b class="fragment">利用變更數值的功能即可將<span style="color: #e07f00">標記</span>部份的數值變更</b>
                 <img class="fragment" src="./img/Instructions/step3_2.png">
             </section>
 
             <section id="step.4">
-                <h3 style="color: #003e68">step.4</h3>
+                <h3 style="color: #1d639c">step.4</h3>
                 <b class="fragment">儲存</b>
                 <br/>
                 <br/>
@@ -338,7 +488,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.4-1</h3>
+                <h3 style="color: #1d639c">step.4-1</h3>
                 <b class="fragment">可以將資料存成</b>
                 <br/>
                 <span class="fragment">
@@ -354,7 +504,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.4-2</h3>
+                <h3 style="color: #1d639c">step.4-2</h3>
                 <span class="fragment">
                 <b>保存的檔案會放在</b>
                 <br/>
@@ -363,7 +513,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section id="step.5">
-                <h3 style="color: #003e68">step.5</h3>
+                <h3 style="color: #1d639c">step.5</h3>
                 <b class="fragment">設定</b>
                 <br/>
                 <br/>
@@ -373,7 +523,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.5-1</h3>
+                <h3 style="color: #1d639c">step.5-1</h3>
                 <img src="./img/Instructions/step5.png">
                 <b class="fragment">設定可以調整資料視圖的</b>
                 <br/>
@@ -383,7 +533,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.5-2</h3>
+                <h3 style="color: #1d639c">step.5-2</h3>
                 <img src="./img/Instructions/step5.png">
                 <b class="fragment">與 "A" "D" 鍵的視圖移動速度</b>
                 <br/>
@@ -391,7 +541,7 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section id="step.6">
-                <h3 style="color: #003e68">step.6</h3>
+                <h3 style="color: #1d639c">step.6</h3>
                 <b class="fragment">其他</b>
                 <br/>
                 <br/>
@@ -401,14 +551,14 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.6-1</h3>
+                <h3 style="color: #1d639c">step.6-1</h3>
                 <img width="70%" src="./img/Instructions/step6.png">
                 <br/>
                 <b class="fragment">系統會自動以現有的X與H計算出Answer</b>
             </section>
 
             <section>
-                <h3 style="color: #003e68">step.6-2</h3>
+                <h3 style="color: #1d639c">step.6-2</h3>
                 <span class="fragment">
                 <b>小功能 : 藉由位置標記的功能，</b>
                 <br/>
@@ -416,8 +566,53 @@ for(let n = 0; n < (input_X.length + input_H.length - 1); n++)
             </span>
             </section>
 
+            <section id="step.7">
+                <h3 style="color: #1d639c">step.7</h3>
+                <b class="fragment">頻率響應特別篇</b>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <a href="#index">目錄</a>
+            </section>
+
             <section>
-                <h1 style="color: #003e68">end</h1>
+                <h3 style="color: #1d639c">step.7-1</h3>
+                <img src="img/Instructions/step7_1.png">
+                <br/>
+                <b class="fragment">點擊"查看頻率響應"</b>
+            </section>
+
+            <section>
+                <h3 style="color: #1d639c">step.7-2</h3>
+                <img width="70%" src="img/Instructions/step7_2.png">
+                <br/>
+                <b class="fragment">點擊後會彈出新視窗</b>
+            </section>
+
+            <section>
+                <h3 style="color: #1d639c">step.7-3</h3>
+                <b>由"檢視"查看頻率大小或相位角</b>
+                <br/>
+                <br/>
+                <b class="fragment">點擊標準化作資料補正</b>
+                <br/>
+                <b class="fragment">&rArr;把X或H的資料數用 0 填至跟Y相等</b>
+            </section>
+
+            <section>
+                <div>
+                    <b>補正前的頻率大小</b>
+                    <img src="./img/Instructions/step7_3_1.png">
+                </div>
+                <div class="fragment">
+                    <b>補正後的頻率大小</b>
+                    <img src="./img/Instructions/step7_3_2.png">
+                </div>
+            </section>
+
+            <section>
+                <h1 style="color: #1d639c">end</h1>
             </section>
             <!-- 簡報內容結束 -->
 

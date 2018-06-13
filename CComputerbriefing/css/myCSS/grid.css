@@ -1,0 +1,103 @@
+/*
+.grid:網格系統
+
+.grid>.grid:自動
+
+
+.grid>.part>.one:網格長度100%/1
+.grid>.part>.two:網格長度100%/2
+.
+.
+.
+.grid>.part>.ten:網格長度100%/10
+*/
+
+.grid {
+    display: -webkit-flex;
+    display: flex;
+}
+
+.grid>grid {
+    width: 100%;
+    min-width: calc(100%/16);
+}
+
+.grid>grid[num="1"] {
+    width: calc(100%/16);
+    min-width: calc(100%/16);
+}
+
+.grid>grid[num="2"] {
+    width: calc(200%/16);
+    min-width: calc(200%/16);
+}
+
+.grid>grid[num="3"] {
+    width: calc(300%/16);
+    min-width: calc(300%/16);
+}
+
+.grid>grid[num="4"] {
+    width: calc(400%/16);
+    min-width: calc(400%/16);
+}
+
+.grid>grid[num="5"] {
+    width: calc(500%/16);
+    min-width: calc(500%/16);
+}
+
+.grid>grid[num="6"] {
+    width: calc(600%/16);
+    min-width: calc(600%/16);
+}
+
+.grid>grid[num="7"] {
+    width: calc(700%/16);
+    min-width: calc(700%/16);
+}
+
+.grid>grid[num="8"] {
+    width: calc(800%/16);
+    min-width: calc(800%/16);
+}
+
+.grid>grid[num="9"] {
+    width: calc(900%/16);
+    min-width: calc(900%/16);
+}
+
+.grid>grid[num="10"] {
+    width: calc(1000%/16);
+    min-width: calc(1000%/16);
+}
+
+.grid>grid[num="11"] {
+    width: calc(1100%/16);
+    min-width: calc(1100%/16);
+}
+
+.grid>grid[num="12"] {
+    width: calc(1200%/16);
+    min-width: calc(1200%/16);
+}
+
+.grid>grid[num="13"] {
+    width: calc(1300%/16);
+    min-width: calc(1300%/16);
+}
+
+.grid>grid[num="14"] {
+    width: calc(1400%/16);
+    min-width: calc(1400%/16);
+}
+
+.grid>grid[num="15"] {
+    width: calc(1500%/16);
+    min-width: calc(1500%/16);
+}
+
+.grid>grid[num="16"] {
+    width: calc(1600%/16);
+    min-width: calc(1600%/16);
+}
